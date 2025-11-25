@@ -1,53 +1,50 @@
-import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/ui/NavBar";
+import { Footer } from "./components/ui/Footer";
+import { WhatsAppButton } from "./components/ui/WhatsappButton";
+import { Home } from "./pages/Home";
+import { OurRoots } from "./pages/OurRoots";
+import { OurStories } from "./pages/OurStories";
+import { MissionReports } from "./pages/MissionReports";
+import { OurTeam } from "./pages/OurTeam";
+import { Contact } from "./pages/Contact";
+import { SupportUs } from "./pages/SupportUs";
+import { LeadershipTrainings } from "./pages/pillars/LeadershipTrainings";
+import { ChristianLiterature } from "./pages/pillars/ChristianLiterature";
+import { MissionMobilization } from "./pages/pillars/MissionMobilization";
+import { ThingiraInitiative } from "./pages/pillars/ThingiraInitiative";
+import { Kenya } from "./pages/projects/Kenya";
+import { Uganda } from "./pages/projects/Uganda";
+import { Congo } from "./pages/projects/Congo";
+import { Mozambique } from "./pages/projects/Mozambique";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-100">
-      <section className="mx-auto flex max-w-3xl flex-col gap-10 px-6 py-16 text-center">
-        <div>
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-indigo-400">
-            ACLM Website
-          </p>
-          <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-            Tailwind CSS is now ready to power your UI.
-          </h1>
-          <p className="mt-4 text-base text-slate-300 sm:text-lg">
-            Edit `src/App.jsx` and start composing interfaces with utility classes.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-8 shadow-2xl shadow-indigo-500/20">
-          <p className="text-sm uppercase tracking-[0.2em] text-slate-400">
-            Interactive demo
-          </p>
-          <p className="mt-3 text-6xl font-black text-white">{count}</p>
-          <p className="mt-1 text-sm text-slate-400">button presses</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <button
-              type="button"
-              className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-indigo-500/30 transition hover:bg-indigo-400"
-              onClick={() => setCount((prev) => prev + 1)}
-            >
-              Increase
-            </button>
-            <button
-              type="button"
-              className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-slate-100 transition hover:border-slate-500"
-              onClick={() => setCount(0)}
-            >
-              Reset
-            </button>
-          </div>
-        </div>
-
-        <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
-          Update `tailwind.config.js` to customize tokens.
-        </p>
-      </section>
-    </main>
-  )
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/our-roots" element={<OurRoots />} />
+            <Route path="/our-stories" element={<OurStories />} />
+            <Route path="/projects/kenya" element={<Kenya />} />
+            <Route path="/projects/uganda" element={<Uganda />} />
+            <Route path="/projects/congo" element={<Congo />} />
+            <Route path="/projects/mozambique" element={<Mozambique />} />
+            <Route path="/mission-reports" element={<MissionReports />} />
+            <Route path="/our-team" element={<OurTeam />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/support-us" element={<SupportUs />} />
+            <Route path="/pillars/leadership-trainings" element={<LeadershipTrainings />} />
+            <Route path="/pillars/christian-literature" element={<ChristianLiterature />} />
+            <Route path="/pillars/mission-mobilization" element={<MissionMobilization />} />
+            <Route path="/pillars/thingira-initiative" element={<ThingiraInitiative />} />
+          </Routes>
+        </main>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </Router>
+  );
 }
-
-export default App
