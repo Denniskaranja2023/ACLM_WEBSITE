@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card";
-import { Mail, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Mail, X, ChevronLeft, ChevronRight, Users } from "lucide-react";
 
 const teamMembers = [
   {
@@ -152,9 +152,9 @@ export function OurTeam() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block mb-4">
-            <span className="bg-[#BEA336] text-white px-4 py-2 rounded-full text-sm tracking-wide uppercase">
-              Board of Directors
+          <div className="inline-flex items-center justify-center mb-4">
+            <span className="bg-[#BEA336] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+              <Users className="w-8 h-8" />
             </span>
           </div>
           <h1 className="text-white mb-6 text-3xl md:text-5xl">Meet Our Team</h1>

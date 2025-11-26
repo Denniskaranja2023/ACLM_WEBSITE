@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import aclmLogo from "../../images/ACLM_LOGO.png";
 
@@ -10,6 +10,42 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileStoryOpen, setMobileStoryOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
+
+  // Timers for hover-out delays so dropdowns don't disappear immediately
+  const projectsTimerRef = useRef(null);
+  const storyTimerRef = useRef(null);
+
+  const openProjects = () => {
+    if (projectsTimerRef.current) {
+      clearTimeout(projectsTimerRef.current);
+      projectsTimerRef.current = null;
+    }
+    setShowProjectsDropdown(true);
+  };
+
+  const closeProjects = () => {
+    if (projectsTimerRef.current) clearTimeout(projectsTimerRef.current);
+    projectsTimerRef.current = setTimeout(() => {
+      setShowProjectsDropdown(false);
+      projectsTimerRef.current = null;
+    }, 300);
+  };
+
+  const openStory = () => {
+    if (storyTimerRef.current) {
+      clearTimeout(storyTimerRef.current);
+      storyTimerRef.current = null;
+    }
+    setShowStoryDropdown(true);
+  };
+
+  const closeStory = () => {
+    if (storyTimerRef.current) clearTimeout(storyTimerRef.current);
+    storyTimerRef.current = setTimeout(() => {
+      setShowStoryDropdown(false);
+      storyTimerRef.current = null;
+    }, 300);
+  };
   
   const navLinks = [
     { path: "/", label: "Home" },
@@ -54,8 +90,8 @@ export function Navbar() {
             {/* Projects dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setShowProjectsDropdown(true)}
-              onMouseLeave={() => setShowProjectsDropdown(false)}
+              onMouseEnter={openProjects}
+              onMouseLeave={closeProjects}
             >
               <button
                 className={`flex items-center gap-1 transition-colors ${
@@ -101,8 +137,8 @@ export function Navbar() {
             {/* Our story dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setShowStoryDropdown(true)}
-              onMouseLeave={() => setShowStoryDropdown(false)}
+              onMouseEnter={openStory}
+              onMouseLeave={closeStory}
             >
               <button
                 className={`flex items-center gap-1 transition-colors ${

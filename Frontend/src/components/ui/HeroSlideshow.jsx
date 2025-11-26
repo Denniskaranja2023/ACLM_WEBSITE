@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Import local hero images so Vite can bundle and optimize them correctly
+import heroImage1 from "../../images/ACLM 4.jpg";
+import heroImage2 from "../../images/aclm 5.jpg";
+import heroImage3 from "../../images/ACLM 1.png";
+
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1761666520005-3ffcf13e74c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwY29tbXVuaXR5JTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc2MzYzMjIwMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "African community gathering"
+    image: heroImage1,
+    alt: "African community gathering",
   },
   {
-    image: "https://images.unsplash.com/photo-1632723188354-7ba967c218bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHJpc3RpYW4lMjBsZWFkZXJzaGlwJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzYzNjcwNzM2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "Christian leadership training"
+    image: heroImage2,
+    alt: "Christian leadership training",
   },
   {
-    image: "https://images.unsplash.com/photo-1717201611909-0f75ee9b0b1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2ElMjBtaXNzaW9uJTIwY29tbXVuaXR5fGVufDF8fHx8MTc2MzY3MDczN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    alt: "Africa mission community"
-  }
+    image: heroImage3,
+    alt: "Africa mission community",
+  },
 ];
 
 export function HeroSlideshow() {
@@ -29,7 +34,7 @@ export function HeroSlideshow() {
   }, []);
 
   return (
-    <div className="relative h-[450px] md:h-[600px] overflow-hidden">
+    <div className="relative h-[85vh] overflow-hidden">
       {/* Slideshow Images */}
       {slides.map((slide, index) => (
         <div
