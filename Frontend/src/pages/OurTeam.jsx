@@ -1,99 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "../components/ui/Card";
 import { Mail, X, ChevronLeft, ChevronRight, Users } from "lucide-react";
+import Mwiti from "../images/Mwiti.png"
+import Waigwa from "../images/Waigwa_treasurer.png"
+import Chris from "../images/Chris_vicetreasurer.png"
+import Suji from "../images/Suji_Chair.png"
 
 const teamMembers = [
   {
     id: 1,
-    name: "Pastor Sarah Mwangi",
+    name: "Pastor Samuel Mwiti",
     position: "Secretary-General",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwd29tYW4lMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzYzNzIzMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "Pastor Sarah oversees the day-to-day operations of ACLM with excellence and grace. With a background in church administration and development studies, she ensures that ACLM's programs run efficiently and effectively. Her organizational skills and heart for ministry make her invaluable to the team.",
-    email: "secretary@aclm.org",
-    specialization: "Operations & Program Management",
-    experience: [
-      "15+ years in church administration and leadership",
-      "Masters in Development Studies from University of Nairobi",
-      "Former Director of Operations at Nairobi Chapel",
-      "Certified Project Management Professional (PMP)",
-      "Pioneer of women's leadership programs across Kenya"
-    ]
+    image: Mwiti,
+    bio: "Pastor Mwiti is married to Miriam Mwiti. Born on 25 May 1961, he trained as a Technical Teacher between 1984 and 1988 and went on to teach in several institutions, including Kitui schools, Isiolo Girls' High School, and Isiolo Boys' High School.He brings extensive experience in mercy ministry, having served with Compassion International from 1994 to 1996. In addition, he has served as a missionary in Isiolo and as the Pastor of Faith Baptist Church, Isiolo, from 1997 to 1999.Pastor Mwiti has been serving with Trinity Fellowship since 1999, where he continues to disciple nations for God's glory. Within ACLM, he oversees the day-to-day running of all ministry activities, providing leadership, coordination, and spiritual guidance."
   },
   {
     id: 2,
-    name: "Rev. Dr. John Kamau",
+    name: "Mr.Omeno Suji",
     position: "Chairman",
-    image: "https://images.unsplash.com/photo-1442118325940-300e8fe327d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwYnVzaW5lc3MlMjBsZWFkZXJ8ZW58MXx8fHwxNzYzNzIzMjU4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "Dr. Kamau brings over 25 years of ministry experience spanning pastoral work, theological education, and missions leadership. He holds a Doctorate in Missiology and has served in various leadership capacities across East Africa. His passion for developing godly leaders has been instrumental in shaping ACLM's strategic vision.",
-    email: "chairman@aclm.org",
-    specialization: "Strategic Leadership & Missions",
-    experience: [
-      "25+ years in pastoral ministry and missions",
-      "PhD in Missiology from Trinity Evangelical Divinity School",
-      "Senior Pastor at Parklands Baptist Church (2005-2018)",
-      "Established 20+ churches across East Africa",
-      "Author of 'Leadership in African Context' and 'Discipleship Matters'",
-      "Speaker at international missions conferences"
-    ]
-  },
-  {
-    id: 3,
-    name: "Pastor Samuel Wanjiru",
-    position: "Vice-Chairman",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYW4lMjBwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjM3MjMyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "Pastor Samuel serves as Vice-Chairman, bringing wisdom and pastoral insight to the leadership team. With over 20 years of church ministry experience and a heart for discipleship, he champions ACLM's mission to develop Christ-centered leaders. His mentorship has impacted countless young leaders across Kenya.",
-    email: "vice.chairman@aclm.org",
-    specialization: "Leadership Development & Mentorship",
-    experience: [
-      "20+ years in pastoral ministry and discipleship",
-      "Masters in Theological Studies from Nairobi Evangelical Graduate School",
-      "Lead Pastor at Trinity Fellowship Church",
-      "Mentor to 100+ young ministers across Kenya",
-      "Coordinator of ACLM's Leadership Training Programs",
-      "Expert in biblical counseling and spiritual formation"
-    ]
+    image: Suji,
+    bio: "Mr. Suji is a seasoned social development expert, entrepreneur, and researcher with over two decades of experience working across the Horn of Africa, East Africa, and Central Africa. He met the Lord in high school and has since served in various capacities within multiple Christian organizations, bringing a rich blend of ministry experience and professional insight.He is the founder and director of Beryl Consult Limited, an MSME consulting firm based in Nairobi, Kenya, where he has led numerous development, research, and enterprise-support initiatives for the past 20 years. Trained initially as a science teacher, Suji began his career in the education sector—first as a teacher and later as an education officer—before transitioning into the international development field.Mr. Suji holds a Master of Arts in Development Communication and a double-major undergraduate degree in Education and Business Administration from Messiah College and Daystar University. He currently resides in the Lukenya area of Machakos County, where he also serves as a bi-vocational pastor at Lukenya Community Church.As the Chairman of ACLM, Mr. Suji provides strategic leadership, governance oversight, and institutional direction. He guides the board in setting vision and policy, strengthens partnerships and networks, supports donor and stakeholder engagement, and ensures that ACLM remains mission-focused and accountable in all its operations.He is married to Helen (née Shonko), and together they are blessed with three grown children—two daughters and one son."
   },
   {
     id: 4,
-    name: "David Omondi",
+    name: "Mr Ndiritu Waigwa",
     position: "Treasurer & Resource Mobilizer",
-    image: "https://images.unsplash.com/photo-1425421669292-0c3da3b8f529?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMGV4ZWN1dGl2ZXxlbnwxfHx8fDE3NjM2Mjc2OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "David is a certified accountant with extensive experience in non-profit financial management and fundraising. His expertise in financial stewardship and donor relations has been crucial in ensuring ACLM's financial sustainability. He combines professional excellence with a deep commitment to kingdom work.",
-    email: "treasurer@aclm.org",
-    specialization: "Finance & Resource Development",
-    experience: [
-      "Certified Public Accountant (CPA-K)",
-      "MBA in Finance from Strathmore University",
-      "12+ years in non-profit financial management",
-      "Former Finance Director at World Vision Kenya",
-      "Expertise in donor management and grant writing",
-      "Successfully raised over $2M for missions work",
-      "Member of Institute of Certified Public Accountants of Kenya"
-    ]
+    image: Waigwa,
+    bio: "Mr. Ndiritu Waigwa is married to Anne Njambi and is a father of three: Waigwa, Mutugi, and Neema Wakio. He holds a Degree in Economics and Sociology from the University of Nairobi.With a solid background as an insurance professional and businessman, Mr. Ndiritu brings prudent financial judgment, strategic oversight, and sound governance to the ACLM Board. In his role, he is responsible for managing ACLM finances and leading the resource mobilization efforts of the organization, including donor engagement.He also offers extensive experience in church administration, having been ordained and served faithfully as a deacon at Parklands Baptist Church. His blend of professional expertise, ministry experience, and stewardship makes him a valuable asset to ACLM."
   },
   {
     id: 5,
-    name: "Grace Adhiambo",
+    name: "DR Chris Wanyoike",
     position: "Assistant Treasurer",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwYnVzaW5lc3MlMjB3b21hbnxlbnwxfHx8fDE3NjM3MjMyNTh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    bio: "Grace supports the treasury department with meticulous attention to detail and unwavering integrity. She holds a degree in Finance and brings valuable experience in bookkeeping and financial reporting. Her dedication to accurate record-keeping ensures transparency and accountability in all financial matters.",
-    email: "finance@aclm.org",
-    specialization: "Financial Administration",
-    experience: [
-      "Bachelor's Degree in Finance and Accounting",
-      "8+ years in bookkeeping and financial reporting",
-      "Certified QuickBooks Professional",
-      "Expert in financial compliance and auditing",
-      "Former accountant at Samaritan's Purse Kenya",
-      "Skilled in budget preparation and financial analysis",
-      "Committed to financial transparency and integrity"
-    ]
+    image: Chris, 
+    bio: "Dr. Chris Wanyoike is a born-again Christian, a pharmacist, and a public health consultant who brings strong organizational, analytical, and systems-management skills to ACLM. With extensive experience in public health and project management, he has coordinated cross-functional teams and multi-stakeholder partnerships—including government agencies, NGOs, and faith-based networks—to align program goals with strategic priorities.He has successfully managed complete project lifecycles, overseeing budgeting, procurement, monitoring, and evaluation, while ensuring transparent reporting and full donor compliance. Dr. Wanyoike has also implemented digital platforms such as ERP systems and mobile M&E tools to strengthen operational efficiency, enhance data transparency, and support timely decision-making. His commitment to equity is demonstrated through initiatives that integrate community-centered approaches into health and nutrition programs.Within ACLM, Dr. Wanyoike serves as the Assistant Treasurer, supporting the management of financial operations, promoting accountability, strengthening organizational systems, and contributing to strategic planning and program oversight."
   }
 ];
 
 export function OurTeam() {
   const [selectedMember, setSelectedMember] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleCardClick = (member) => {
     setSelectedMember(member);
@@ -102,7 +50,6 @@ export function OurTeam() {
 
   const handleClose = () => {
     setIsLightboxOpen(false);
-    // Delay clearing selectedMember to allow fade-out animation
     setTimeout(() => setSelectedMember(null), 300);
   };
 
@@ -122,7 +69,21 @@ export function OurTeam() {
     }
   };
 
-  // Handle ESC key to close lightbox
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && isLightboxOpen) {
@@ -132,7 +93,7 @@ export function OurTeam() {
 
     if (isLightboxOpen) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent body scroll
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -145,7 +106,6 @@ export function OurTeam() {
     <div>
       {/* Header Section */}
       <div className="relative bg-gradient-to-br from-[#2E652A] via-[#2E652A] to-[#234d21] py-20 md:py-24 overflow-hidden">
-        {/* Decorative Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-[#BEA336] rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#BEA336] rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
@@ -166,27 +126,27 @@ export function OurTeam() {
       </div>
 
       {/* Team Members Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {teamMembers.map((member) => (
+      <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {teamMembers.map((member, index) => (
             <Card 
               key={member.id} 
-              className="overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer group"
+              className={`overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-800 cursor-pointer group border border-gray-200 transform ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+              style={{transitionDelay: `${index * 200}ms`}}
               onClick={() => handleCardClick(member)}
             >
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-96 overflow-hidden">
                 <img 
                   src={member.image} 
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
-                  <h3 className="text-white text-lg md:text-xl mb-2">{member.name}</h3>
-                  <span className="inline-block bg-[#BEA336] text-white px-3 py-1 rounded-full text-xs">
-                    {member.position}
-                  </span>
-                </div>
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="text-[#2E652A] text-lg md:text-xl mb-2 font-bold uppercase">{member.name}</h3>
+                <p className="text-[#6B7280] text-base font-semibold">
+                  {member.position}
+                </p>
               </div>
             </Card>
           ))}
@@ -210,15 +170,12 @@ export function OurTeam() {
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={handleClose}
         >
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
           
-          {/* Lightbox Content */}
           <div 
-            className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden transform transition-all"
+            className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full transform transition-all"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={handleClose}
               className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
@@ -227,7 +184,6 @@ export function OurTeam() {
               <X className="w-5 h-5 text-gray-700" />
             </button>
 
-            {/* Navigation Buttons */}
             {teamMembers.length > 1 && (
               <>
                 <button
@@ -254,9 +210,8 @@ export function OurTeam() {
               </>
             )}
 
-            <div className="grid md:grid-cols-5 max-h-[90vh] overflow-hidden">
-              {/* Image Section */}
-              <div className="md:col-span-2 relative h-96 md:h-[90vh]">
+            <div className="grid md:grid-cols-2">
+              <div className="relative h-[500px] md:h-[600px]">
                 <img 
                   src={selectedMember.image} 
                   alt={selectedMember.name}
@@ -265,45 +220,19 @@ export function OurTeam() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               </div>
 
-              {/* Content Section */}
-              <div className="md:col-span-3 p-8 md:p-10 max-h-[90vh] overflow-y-auto">
-                <div className="mb-6">
-                  <span className="inline-block bg-[#BEA336] text-white px-4 py-1 rounded-full text-sm mb-4">
+              <div className="p-6 md:p-8 pr-16 md:pr-20">
+                <div className="mb-4">
+                  <span className="inline-block bg-[#BEA336] text-white px-3 py-1 rounded-full text-sm mb-3">
                     {selectedMember.position}
                   </span>
-                  <h2 className="text-[#2E652A] mb-2 text-2xl md:text-3xl">{selectedMember.name}</h2>
-                  <p className="text-[#BEA336] uppercase tracking-wide text-sm">
-                    {selectedMember.specialization}
-                  </p>
+                  <h2 className="text-[#2E652A] mb-2 text-xl md:text-2xl">{selectedMember.name}</h2>
                 </div>
 
-                <div className="mb-6">
+                <div>
                   <h3 className="text-[#2E652A] mb-3 font-semibold">About</h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed text-sm text-justify">
                     {selectedMember.bio}
                   </p>
-                </div>
-
-                <div className="mb-6">
-                  <h3 className="text-[#2E652A] mb-3 font-semibold">Experience & Qualifications</h3>
-                  <ul className="space-y-2">
-                    {selectedMember.experience.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-[#BEA336] mt-1.5 flex-shrink-0">•</span>
-                        <span className="text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-6 border-t border-gray-200">
-                  <a 
-                    href={`mailto:${selectedMember.email}`}
-                    className="inline-flex items-center gap-2 bg-[#2E652A] hover:bg-[#234d21] text-white px-6 py-3 rounded-lg transition-all"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>Contact {selectedMember.name.split(' ')[0]}</span>
-                  </a>
                 </div>
               </div>
             </div>

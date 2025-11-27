@@ -60,6 +60,7 @@ const videos = [
 
 export function Congo() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,8 +70,12 @@ export function Congo() {
     return () => clearInterval(interval);
   }, []);
 
- const openYouTubeVideo = (youtubeId) => {
-    window.open(`https://www.youtube.com/watch?v=${youtubeId}`, '_blank');
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+  };
+
+  const closeVideo = () => {
+    setSelectedVideo(null);
   };
 
   return (
@@ -170,7 +175,7 @@ export function Congo() {
               <div 
                 key={video.id}
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-                onClick={() => openYouTubeVideo(video.youtubeId)}
+                onClick={() => handleVideoClick(video)}
               >
                 <div className="relative group">
                   <img 
@@ -195,7 +200,7 @@ export function Congo() {
                   </p>
                   <div className="flex items-center gap-2 text-[#BEA336] hover:text-[#2E652A] text-sm group">
                     <span>Watch Now</span>
-                    <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <Play className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
@@ -203,6 +208,34 @@ export function Congo() {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {selectedVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" onClick={closeVideo}>
+          <div className="relative bg-white rounded-lg overflow-hidden max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={closeVideo}
+              className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
+            >
+              ×
+            </button>
+            <div className="aspect-video">
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
+                title={selectedVideo.title}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-6">
+              <h3 className="text-[#2E652A] text-xl mb-2">{selectedVideo.title}</h3>
+              <p className="text-gray-600">{selectedVideo.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

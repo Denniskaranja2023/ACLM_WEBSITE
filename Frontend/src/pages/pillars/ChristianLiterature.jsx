@@ -1,9 +1,10 @@
 import { Book, FileText, Bookmark } from "lucide-react";
 import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
+import Cube from "../../images/Evangelism cube.jpeg"
 
 const slideshowImages = [
   "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1581832098756-5b29318b542e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHJpc3RpYW4lMjBib29rcyUyMGxpYnJhcnl8ZW58MXx8fHwxNzYzNzE2NjExfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+   Cube,
   "https://images.unsplash.com/photo-1759420164008-138f2d458885?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwc2NyaXB0dXJlfGVufDF8fHx8MTc2MzcxNjYxMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
 ];
 

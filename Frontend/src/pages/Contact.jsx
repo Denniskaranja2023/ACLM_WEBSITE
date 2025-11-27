@@ -26,8 +26,8 @@ export function Contact() {
   };
 
   const openGoogleMaps = () => {
-    // Trinity Fellowship, Garden Estate coordinates (approximate)
-    const address = "Trinity Fellowship, Garden Estate, Nairobi";
+    // Trinity Fellowship Center, Garden Estate coordinates
+    const address = "Trinity Fellowship Center, Garden Estate, Nairobi, Kenya";
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
     window.open(mapsUrl, '_blank');
   };
@@ -78,7 +78,7 @@ export function Contact() {
                     </div>
                     <div>
                       <h3 className="text-xl mb-2">Physical Address</h3>
-                      <p className="text-[#F6EFE2] text-sm mb-1">Trinity Fellowship</p>
+                      <p className="text-[#F6EFE2] text-sm mb-1">Trinity Fellowship Center</p>
                       <p className="text-[#F6EFE2] text-sm mb-1">Next to Faith Ventures School</p>
                       <p className="text-[#F6EFE2] text-sm">Garden Estate, Nairobi</p>
                     </div>

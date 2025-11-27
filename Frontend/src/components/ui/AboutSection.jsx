@@ -48,13 +48,13 @@ export function AboutSection() {
           {/* ACLM Info Section */}
           <div className={`bg-white p-8 rounded-lg shadow-sm transition-all duration-1800 delay-1600 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform ${isVisible ? 'opacity-100 translate-y-0 rotate-0 scale-100' : 'opacity-0 translate-y-24 -rotate-8 scale-80'}`}>
             <h3 className="text-[#2E652A] text-2xl mb-6 font-bold">Africa Center for Leadership and Missions</h3>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed text-justify">
               Our mission is to develop leaders through Christian discipleship (2 Timothy 2:2). 
               We organize and facilitate evangelism and mission training, providing materials for 
               evangelism and discipleship. By God's grace, we have worked in Uganda, Rwanda, 
               Burundi, Congo, and Mozambique, and support missionaries in Mozambique and Cambodia.
             </p>
-            <p className="text-gray-700 leading-relaxed mt-4">
+            <p className="text-gray-700 leading-relaxed mt-4 text-justify">
               We catalyze foreign missions by providing cover for called individuals, skill training 
               in evangelism and discipleship for pastors, and serving as a reference point for mercy 
               initiatives and pioneering work in health, education, food security, and water provision 
@@ -93,7 +93,7 @@ export function AboutSection() {
         {/* Our Story */}
         <div className={`bg-white p-8 rounded-lg shadow-sm text-center max-w-4xl mx-auto transition-all duration-2000 delay-3200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform ${isVisible ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-32 scale-75 rotate-4'}`}>
           <h3 className="text-[#2E652A] mb-6 font-bold text-xl">Our Story</h3>
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 mb-6 text-justify">
             ACLM began in the parenting fellowship of Parklands Baptist Church in Nairobi, 
             where a burden for raising godly children grew into a wider call to serve the African church.
           </p>
