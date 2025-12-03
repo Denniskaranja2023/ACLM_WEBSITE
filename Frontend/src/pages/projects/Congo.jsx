@@ -15,21 +15,21 @@ const projects = [
     id: 1,
     title: "Church Planter Support Network",
     description: "Supporting indigenous church planters in the Democratic Republic of Congo with training, resources, and ongoing mentorship. Despite challenges of infrastructure and accessibility, we're partnering with local leaders to establish churches in unreached communities, bringing the light of the Gospel to regions where Christ is not yet known.",
-    impact: "15 church planters supported, 8 new churches established",
+    caption: "Local church planters gathering for training and fellowship in Congo",
     image: "https://images.unsplash.com/photo-1741952094741-e7d3bb84e8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaXNzaW9uJTIwY29tbXVuaXR5JTIwc2VydmljZXxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 2,
     title: "French Christian Literature Translation",
     description: "Translating and distributing essential Christian literature in French to serve the Francophone communities of Congo. We're making discipleship resources, Bible study materials, and theological books accessible to pastors and believers who primarily speak French, empowering them with tools for spiritual growth.",
-    impact: "3,000+ French books distributed across 5 provinces",
+    caption: "French Christian literature being distributed to pastors and church leaders",
     image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 3,
     title: "Missionary Family Care Program",
     description: "Providing practical and spiritual support to missionary families serving in Congo. Through financial assistance, prayer networks, and periodic visits, we ensure that those who've answered the call to serve in challenging contexts are well-supported, enabling them to focus on their mission work with peace of mind.",
-    impact: "12 missionary families supported and encouraged",
+    caption: "Missionary families receiving support and encouragement in Congo",
     image: "https://images.unsplash.com/photo-1632723188354-7ba967c218bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHJpc3RpYW4lMjBsZWFkZXJzaGlwJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzYzNjcwNzM2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   }
 ];
@@ -136,23 +136,22 @@ export function Congo() {
           {projects.map((project, index) => (
             <Card key={project.id} className="overflow-hidden">
               <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
-                <div className={`h-64 md:h-auto ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-80 object-cover"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                    <p className="text-sm italic">{project.caption}</p>
+                  </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
                   <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="bg-[#F6EFE2] p-4 rounded-lg">
-                    <p className="text-[#2E652A]">
-                      <span className="font-medium">Impact:</span> {project.impact}
-                    </p>
-                  </div>
+
                 </CardContent>
               </div>
             </Card>

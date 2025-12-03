@@ -15,21 +15,21 @@ const projects = [
     id: 1,
     title: "Pastoral Training & Equipping",
     description: "We partner with local churches in Uganda to provide in-depth biblical training for pastors and church leaders. Our training modules cover theology, church administration, and practical ministry skills. Through workshops and seminars, we've empowered Ugandan pastors to better serve their congregations and communities.",
-    impact: "300+ pastors trained in 8 regions",
+    caption: "Pastors and church leaders during a training workshop in Uganda",
     image: "https://images.unsplash.com/photo-1646579886135-068c73800308?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWFkZXJzaGlwJTIwdHJhaW5pbmclMjB3b3Jrc2hvcHxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 2,
     title: "Bible Distribution Program",
     description: "Providing Bibles and Christian literature to churches and communities with limited access to Scripture. We've distributed thousands of Bibles in both English and local languages, along with discipleship materials that help new believers grow in their faith.",
-    impact: "5,000+ Bibles and books distributed",
+    caption: "Bibles and Christian literature being distributed to local communities",
     image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 3,
     title: "Youth Ministry Development",
     description: "Establishing and strengthening youth ministries across Uganda by training youth leaders and providing resources for effective youth outreach. Our program focuses on discipleship, leadership development, and equipping young people to be ambassadors for Christ in their schools and communities.",
-    impact: "50 youth groups established and supported",
+    caption: "Young people gathering for leadership development and discipleship training",
     image: "https://images.unsplash.com/photo-1732210038505-34a70d3b45a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1lbiUyMG1lZXRpbmd8ZW58MXx8fHwxNjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   }
 ];
@@ -137,23 +137,22 @@ export function Uganda() {
           {projects.map((project, index) => (
             <Card key={project.id} className="overflow-hidden">
               <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
-                <div className={`h-64 md:h-auto ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-80 object-cover"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                    <p className="text-sm italic">{project.caption}</p>
+                  </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
                   <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
                   <p className="text-gray-700 mb-4 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="bg-[#F6EFE2] p-4 rounded-lg">
-                    <p className="text-[#2E652A]">
-                      <span className="font-medium">Impact:</span> {project.impact}
-                    </p>
-                  </div>
+
                 </CardContent>
               </div>
             </Card>

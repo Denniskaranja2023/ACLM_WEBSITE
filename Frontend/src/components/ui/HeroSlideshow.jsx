@@ -34,7 +34,7 @@ export function HeroSlideshow() {
   }, []);
 
   return (
-    <div className="relative h-[85vh] overflow-hidden">
+    <div className="relative h-[75vh] overflow-hidden">
       {/* Slideshow Images */}
       {slides.map((slide, index) => (
         <div

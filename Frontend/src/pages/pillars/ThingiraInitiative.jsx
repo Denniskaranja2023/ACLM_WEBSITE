@@ -1,10 +1,14 @@
 import { Heart, MapPin, Award } from "lucide-react";
 import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
+import ThingiraMain from "../../images/Thingira_main.jpeg"
+import DistributingBalls from "../../images/Issuing-balls-thingira.jpeg"
+import GraciousFoundation from "../../images/grace_foundation_thingira.jpeg"
+import KickOutDrugs from "../../images/Kicking_drugs_out_thingira.jpeg"
+import Prematch from "../../images/prematch_thingira.jpeg"
+import AllMen from "../../images/All men_Thingira.jpeg"
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1732210038505-34a70d3b45a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1lbiUyMG1lZXRpbmd8ZW58MXx8fHwxNzYzNjcyODgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1655323443786-49f2b12d2c97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZW4lMjBmZWxsb3dzaGlwfGVufDF8fHx8MTc2MzcxNjYxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1639432039026-d13fa89599bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3V0aCUyMG1lbnRvcnNoaXB8ZW58MXx8fHwxNzYzNzE2NjEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  ThingiraMain, AllMen, Prematch, DistributingBalls, GraciousFoundation,KickOutDrugs
 ];
 
 export function ThingiraInitiative() {

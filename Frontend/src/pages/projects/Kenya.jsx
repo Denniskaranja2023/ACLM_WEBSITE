@@ -15,28 +15,28 @@ const projects = [
     id: 1,
     title: "Church Leadership Development Program",
     description: "A comprehensive program that equips pastors and church leaders across Kenya with biblical knowledge and practical ministry skills. We've trained over 500 church leaders in 15 counties, providing them with resources and ongoing mentorship to strengthen their churches and communities.",
-    impact: "500+ leaders trained across 15 counties",
+    caption: "Church leaders participating in a leadership development workshop in Kenya",
     image: "https://images.unsplash.com/photo-1646579886135-068c73800308?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWFkZXJzaGlwJTIwdHJhaW5pbmclMjB3b3Jrc2hvcHxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 2,
     title: "Evangelism Cube Distribution",
     description: "Distribution of the Evangelism Cube tool to churches and individual evangelists across Kenya. This innovative tool simplifies gospel presentation and has been instrumental in leading thousands to Christ. We've distributed over 10,000 cubes and trained users on effective evangelism techniques.",
-    impact: "10,000+ Evangelism Cubes distributed",
+    caption: "Evangelism Cubes and Christian literature ready for distribution",
     image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 3,
     title: "Rural Church Planting Initiative",
     description: "Supporting the planting of new churches in underserved rural communities across Kenya. We provide initial resources, training, and ongoing support to church planters, helping establish vibrant Christian communities where the gospel had limited reach.",
-    impact: "25 new churches planted in rural areas",
+    caption: "Community gathering for the launch of a new church plant in rural Kenya",
     image: "https://images.unsplash.com/photo-1741952094741-e7d3bb84e8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaXNzaW9uJTIwY29tbXVuaXR5JTIwc2VydmljZXxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
   },
   {
     id: 4,
     title: "Thingira Initiative",
     description: "The Thingira Initiative is a transformative program focused on empowering young men across Kenya with biblical manhood principles. Through county-wide engagements, mentorship programs, and leadership camps, we're helping the boychild discover their God-given identity and purpose. The initiative addresses critical issues facing young men today and equips them to be godly leaders in their families and communities.",
-    impact: "2,000+ young men reached across 10 counties",
+    caption: "Young men gathering for Thingira Initiative mentorship and leadership training",
     image: "https://images.unsplash.com/photo-1732210038505-34a70d3b45a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1lbiUyMG1lZXRpbmd8ZW58MXx8fHwxNzYzNjcyODgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     isThingira: true
   }
@@ -145,12 +145,15 @@ export function Kenya() {
           {projects.map((project) => (
             <Card key={project.id} className={`overflow-hidden ${project.isThingira ? 'border-2 border-[#BEA336]' : ''}`}>
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-auto">
+                <div className="relative">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-80 object-cover"
                   />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                    <p className="text-sm italic">{project.caption}</p>
+                  </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
                   {project.isThingira && (
@@ -162,11 +165,7 @@ export function Kenya() {
                   <p className="text-gray-700 mb-4 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="bg-[#F6EFE2] p-4 rounded-lg">
-                    <p className="text-[#2E652A]">
-                      <span className="font-medium">Impact:</span> {project.impact}
-                    </p>
-                  </div>
+
                 </CardContent>
               </div>
             </Card>

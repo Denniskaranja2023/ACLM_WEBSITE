@@ -3,7 +3,7 @@ import { MessageCircle } from "lucide-react";
 export function WhatsAppButton() {
   // Replace this with the actual ACLM WhatsApp number
   // Format: country code + number (no + or spaces)
-  const whatsappNumber = "254711606734"; // Updated with actual number from contact page
+  const whatsappNumber = "254722860888"; // Updated with actual number from contact page
   const message = "Hello ACLM, I would like to know more about your ministry.";
   
   const handleWhatsAppClick = () => {
