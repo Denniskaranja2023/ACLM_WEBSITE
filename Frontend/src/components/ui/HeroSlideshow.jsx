@@ -3,13 +3,24 @@ import { useNavigate } from "react-router-dom";
 
 // Import local hero images so Vite can bundle and optimize them correctly
 import heroImage1 from "../../images/ACLM 4.jpg";
+import TrainingImage from "../../images/Evangelism training-mozambique.jpeg"
+import SmallGroups from "../../images/small-groups-after-training-mozambique.jpeg"
 import heroImage2 from "../../images/aclm 5.jpg";
 import heroImage3 from "../../images/ACLM 1.png";
+import ThingiraMain from "../../images/Thingira_main.jpeg"
 
 const slides = [
   {
+    image: TrainingImage,
+    alt: "Evangelism training in Mozambique"
+  },
+  {
     image: heroImage1,
     alt: "African community gathering",
+  },
+  {
+    image: SmallGroups,
+    alt: "Small groups after evangelism",
   },
   {
     image: heroImage2,
@@ -18,6 +29,10 @@ const slides = [
   {
     image: heroImage3,
     alt: "Africa mission community",
+  },
+  {
+    image: ThingiraMain,
+    alt: "Empowering the boy child",
   },
 ];
 
