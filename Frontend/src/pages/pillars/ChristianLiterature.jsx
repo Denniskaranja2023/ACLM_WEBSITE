@@ -1,84 +1,167 @@
-import { Book, FileText, Bookmark } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
+import { LoadingPage } from "../../components/ui/LoadingPage";
+import { Card } from "../../components/ui/Card";
+import { CardContent } from "../../components/ui/CardContent";
 import Cube from "../../images/Evangelism cube.jpeg"
+import AudioBibles from "../../images/Audio-Bible-cropped.png"
+import Literature from "../../images/Discipleship-Literature-Mozambique.jpeg"
+import MenTraining from "../../images/Every-man-a-warrior-mozambique.jpeg"
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-   Cube,
-  "https://images.unsplash.com/photo-1759420164008-138f2d458885?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwc2NyaXB0dXJlfGVufDF8fHx8MTc2MzcxNjYxMnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  Literature,
+  Cube,
+  MenTraining
+];
+
+const projects = [
+  {
+    id: 1,
+    title: "Audio Bibles Distribution",
+    description: "We believe that the Bible is the most important book in the world and is central in both discipleship and evangelism. We are committed to making the Bible accessible to everyone, everywhere. We distribute Audio Bibles to churches and communities so that people can hear the good news in their language, especially reaching those who cannot read or prefer audio learning.",
+    images: [
+      { image: AudioBibles, caption: "Our missionary Kennedy Mukono demonstartes the use of the Audio Bible to a local" }
+    ]
+  },
+  {
+    id: 2,
+    title: "Discipleship Materials",
+    description: "We provide comprehensive discipleship materials designed to help new believers grow in their faith and mature Christians deepen their walk with God. These resources cover essential topics such as prayer, Bible study, Christian living, and service. Our materials are contextually relevant and designed specifically for the African church context.",
+    images: [
+      { image: Literature, caption: "Discipleship literature and training materials for church leaders" }
+    ]
+  },
+  {
+    id: 3,
+    title: "The Evangelism Cube",
+    description: "Our flagship evangelism tool, the Evangelism Cube is a simple yet powerful resource that helps believers share the Gospel clearly and effectively. This visual aid breaks down the core message of salvation in a way that is easy to understand and remember, making it an invaluable tool for both new and experienced evangelists across Africa.",
+    images: [
+      { image: Cube, caption: "The Evangelism Cube - a powerful tool for sharing the Gospel" }
+    ]
+  }
 ];
 
 export function ChristianLiterature() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [projectSlides, setProjectSlides] = useState(projects.reduce((acc, project) => ({ ...acc, [project.id]: 0 }), {}));
+  const [isProjectSectionVisible, setIsProjectSectionVisible] = useState(false);
+  const projectSectionRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const intervals = projects.map(project => 
+      setInterval(() => {
+        setProjectSlides(prev => ({
+          ...prev,
+          [project.id]: (prev[project.id] + 1) % project.images.length
+        }));
+      }, 7000)
+    );
+    return () => intervals.forEach(clearInterval);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsProjectSectionVisible(entry.isIntersecting);
+        },
+        { threshold: 0.2 }
+      );
+
+      if (projectSectionRef.current) {
+        observer.observe(projectSectionRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <div>
       <PillarSlideShow images={slideshowImages} title="Christian Literature" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-12">
-          <h2 className="text-[#2E652A] mb-4">Providing Essential Resources for Ministry</h2>
-          <p className="text-gray-700 mb-8">
-            ACLM is committed to providing quality Christian literature and resources that equip believers 
-            for effective evangelism, discipleship, and spiritual growth. We believe that well-crafted 
-            biblical resources are essential tools for spreading the Gospel and building up the body of Christ.
+      {/* Projects Section */}
+      <div ref={projectSectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className={`text-center mb-12 transition-all duration-2000 ease-out ${isProjectSectionVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
+          <h2 className="text-[#2E652A] mb-4 text-4xl">Our Literature Resources</h2>
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            Providing essential resources for effective evangelism, discipleship, and spiritual growth across Africa.
           </p>
+        </div>
 
-          <h3 className="text-[#2E652A] mb-6">Our Literature Resources:</h3>
-          
-          <div className="space-y-6 mb-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#2E652A]">
-              <div className="flex items-start">
-                <Book className="w-8 h-8 text-[#BEA336] mr-4 flex-shrink-0" />
-                <div>
-                  <h4 className="text-[#2E652A] mb-2">The Evangelism Cube</h4>
-                  <p className="text-gray-700">
-                    Our flagship evangelism tool, the Evangelism Cube is a simple yet powerful resource that 
-                    helps believers share the Gospel clearly and effectively. This visual aid breaks down the 
-                    core message of salvation in a way that is easy to understand and remember, making it an 
-                    invaluable tool for both new and experienced evangelists.
-                  </p>
+        <div className="space-y-12">
+          {projects.map((project, index) => (
+            <Card key={project.id} className={`overflow-hidden transition-all duration-1800 delay-${400 + index * 600} ${isProjectSectionVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
+              <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
+                <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''} overflow-hidden h-80`}>
+                  {project.images.map((imageData, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
+                        imgIndex === projectSlides[project.id] ? "translate-x-0" : 
+                        imgIndex < projectSlides[project.id] ? "-translate-x-full" : "translate-x-full"
+                      }`}
+                    >
+                      <img 
+                        src={imageData.image} 
+                        alt={project.title}
+                        className="w-full h-80 object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3 text-center">
+                        <p className="text-sm italic">{imageData.caption}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="absolute top-4 right-4 flex space-x-1">
+                    {project.images.map((_, imgIndex) => (
+                      <button
+                        key={imgIndex}
+                        onClick={() => setProjectSlides(prev => ({ ...prev, [project.id]: imgIndex }))}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          imgIndex === projectSlides[project.id] ? "bg-[#BEA336]" : "bg-white/50"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#2E652A]">
-              <div className="flex items-start">
-                <FileText className="w-8 h-8 text-[#BEA336] mr-4 flex-shrink-0" />
-                <div>
-                  <h4 className="text-[#2E652A] mb-2">Discipleship Materials</h4>
-                  <p className="text-gray-700">
-                    We provide comprehensive discipleship materials designed to help new believers grow in 
-                    their faith and mature Christians deepen their walk with God. These resources cover 
-                    essential topics such as prayer, Bible study, Christian living, and service.
+                <CardContent className="p-8 flex flex-col justify-center">
+                  <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
+                  <p className="text-gray-700 mb-4 leading-relaxed text-justify">
+                    {project.description}
                   </p>
-                </div>
+                </CardContent>
               </div>
-            </div>
+            </Card>
+          ))}
+        </div>
+      </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-[#2E652A]">
-              <div className="flex items-start">
-                <Bookmark className="w-8 h-8 text-[#BEA336] mr-4 flex-shrink-0" />
-                <div>
-                  <h4 className="text-[#2E652A] mb-2">Training Manuals</h4>
-                  <p className="text-gray-700">
-                    Our training manuals provide practical guidance for ministry leaders in various areas 
-                    including evangelism, discipleship, leadership development, and church planting. These 
-                    resources are designed to be accessible and applicable to the African context.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-[#F6EFE2] p-6 rounded-lg">
-            <h3 className="text-[#2E652A] mb-3">Distribution and Access</h3>
-            <p className="text-gray-700 mb-4">
+      {/* Distribution Section */}
+      <div className="bg-[#f5f5f4] py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={`bg-white p-8 rounded-lg shadow-sm transition-all duration-2000 delay-2000 ${isProjectSectionVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'}`}>
+            <h3 className="text-[#2E652A] mb-6 text-2xl font-bold">Distribution and Access</h3>
+            <p className="text-gray-700 mb-4 leading-relaxed text-justify">
               We distribute our literature through churches, training programs, and mission trips across 
               Africa. Our goal is to make these resources accessible to as many believers as possible, 
               especially in areas where quality Christian literature is scarce.
             </p>
-            <p className="text-gray-700">
+            <p className="text-gray-700 leading-relaxed text-justify">
               Many of our resources are available in multiple languages to ensure that believers can access 
-              them in their heart language, making the truths of Scripture more accessible and impactful.
+              them in their heart language, making the truths of Scripture more accessible and impactful. 
+              We work closely with local churches and ministry partners to ensure effective distribution 
+              and proper training on how to use these materials effectively.
             </p>
           </div>
         </div>

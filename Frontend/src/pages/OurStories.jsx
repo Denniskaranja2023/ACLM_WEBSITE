@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { LoadingPage } from "../components/ui/LoadingPage";
 import { ExternalLink, Play, Film } from "lucide-react";
 
 const videos = [
@@ -47,7 +48,15 @@ const videos = [
 ];
 
 export function OurStories() {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedVideo, setSelectedVideo] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
@@ -56,6 +65,10 @@ export function OurStories() {
   const closeVideo = () => {
     setSelectedVideo(null);
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

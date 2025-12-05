@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Card } from "../components/ui/Card";
+import { LoadingPage } from "../components/ui/LoadingPage";
 import { Mail, X, ChevronLeft, ChevronRight, Users } from "lucide-react";
 import Mwiti from "../images/Mwiti.png"
 import Waigwa from "../images/Waigwa_treasurer.png"
@@ -38,6 +39,7 @@ const teamMembers = [
 ];
 
 export function OurTeam() {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedMember, setSelectedMember] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const sectionRef = useRef(null);
@@ -70,19 +72,28 @@ export function OurTeam() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVisible(entry.isIntersecting);
+        },
+        { threshold: 0.1 }
+      );
+
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -101,6 +112,10 @@ export function OurTeam() {
       document.body.style.overflow = 'unset';
     };
   }, [isLightboxOpen]);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>
@@ -127,7 +142,7 @@ export function OurTeam() {
 
       {/* Team Members Grid */}
       <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {teamMembers.map((member, index) => (
             <Card 
               key={member.id} 
@@ -135,16 +150,16 @@ export function OurTeam() {
               style={{transitionDelay: `${index * 200}ms`}}
               onClick={() => handleCardClick(member)}
             >
-              <div className="relative h-96 overflow-hidden">
+              <div className="relative h-64 sm:h-80 md:h-96 overflow-hidden">
                 <img 
                   src={member.image} 
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
-              <div className="p-4 text-center">
-                <h3 className="text-[#2E652A] text-lg md:text-xl mb-2 font-bold uppercase">{member.name}</h3>
-                <p className="text-[#6B7280] text-base font-semibold">
+              <div className="p-3 sm:p-4 text-center">
+                <h3 className="text-[#2E652A] text-sm sm:text-base md:text-lg lg:text-xl mb-1 sm:mb-2 font-bold uppercase leading-tight">{member.name}</h3>
+                <p className="text-[#6B7280] text-xs sm:text-sm md:text-base font-semibold leading-tight">
                   {member.position}
                 </p>
               </div>
@@ -167,21 +182,21 @@ export function OurTeam() {
       {/* Lightbox */}
       {isLightboxOpen && selectedMember && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={handleClose}
         >
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
           
           <div 
-            className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full transform transition-all"
+            className="relative bg-white rounded-lg sm:rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-y-auto transform transition-all"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
               aria-label="Close lightbox"
             >
-              <X className="w-5 h-5 text-gray-700" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-700" />
             </button>
 
             {teamMembers.length > 1 && (
@@ -191,10 +206,10 @@ export function OurTeam() {
                     e.stopPropagation();
                     handlePrevious();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
                   aria-label="Previous member"
                 >
-                  <ChevronLeft className="w-6 h-6 text-gray-700" />
+                  <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" />
                 </button>
 
                 <button
@@ -202,16 +217,16 @@ export function OurTeam() {
                     e.stopPropagation();
                     handleNext();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white flex items-center justify-center transition-all shadow-lg hover:scale-110"
                   aria-label="Next member"
                 >
-                  <ChevronRight className="w-6 h-6 text-gray-700" />
+                  <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-700" />
                 </button>
               </>
             )}
 
-            <div className="grid md:grid-cols-2">
-              <div className="relative h-[500px] md:h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="relative h-64 sm:h-80 md:h-[500px] lg:h-[600px]">
                 <img 
                   src={selectedMember.image} 
                   alt={selectedMember.name}
@@ -220,17 +235,17 @@ export function OurTeam() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               </div>
 
-              <div className="p-6 md:p-8 pr-16 md:pr-20">
-                <div className="mb-4">
-                  <span className="inline-block bg-[#BEA336] text-white px-3 py-1 rounded-full text-sm mb-3">
+              <div className="p-4 sm:p-6 md:p-8 pr-10 sm:pr-12 md:pr-16 lg:pr-20">
+                <div className="mb-3 sm:mb-4">
+                  <span className="inline-block bg-[#BEA336] text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm mb-2 sm:mb-3">
                     {selectedMember.position}
                   </span>
-                  <h2 className="text-[#2E652A] mb-2 text-xl md:text-2xl">{selectedMember.name}</h2>
+                  <h2 className="text-[#2E652A] mb-2 text-lg sm:text-xl md:text-2xl font-bold">{selectedMember.name}</h2>
                 </div>
 
                 <div>
-                  <h3 className="text-[#2E652A] mb-3 font-semibold">About</h3>
-                  <p className="text-gray-700 leading-relaxed text-sm text-justify">
+                  <h3 className="text-[#2E652A] mb-2 sm:mb-3 font-semibold text-sm sm:text-base">About</h3>
+                  <p className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-sm text-justify">
                     {selectedMember.bio}
                   </p>
                 </div>

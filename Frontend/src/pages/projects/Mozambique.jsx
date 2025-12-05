@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
+import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play } from "lucide-react";
 import TrainingImage from "../../images/Evangelism training-mozambique.jpeg"
 import ChurchPlant from "../../images/Church-plant-interior-Mozambique.jpeg"
@@ -98,11 +99,19 @@ const videos = [
 ];
 
 export function Mozambique() {
+  const [isLoading, setIsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [projectSlides, setProjectSlides] = useState(projects.reduce((acc, project) => ({ ...acc, [project.id]: 0 }), {}));
   const [isVideoSectionVisible, setIsVideoSectionVisible] = useState(false);
   const videoSectionRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -124,21 +133,27 @@ export function Mozambique() {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVideoSectionVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
+    if (!isLoading) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVideoSectionVisible(entry.isIntersecting);
+        },
+        { threshold: 0.2 }
+      );
 
-    if (videoSectionRef.current) {
-      observer.observe(videoSectionRef.current);
+      if (videoSectionRef.current) {
+        observer.observe(videoSectionRef.current);
+      }
+
+      return () => observer.disconnect();
     }
-
-    return () => observer.disconnect();
-  }, []);
+  }, [isLoading]);
 
 
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

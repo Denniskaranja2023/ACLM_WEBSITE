@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
+import { LoadingPage } from "../../components/ui/LoadingPage";
 import ThingiraMain from "../../images/Thingira_main.jpeg"
 import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.jpg"
 import GraciousFoundation from "../../images/grace_foundation_thingira.jpeg"
@@ -11,6 +12,7 @@ const slideshowImages = [
 ];
 
 export function ThingiraInitiative() {
+  const [isLoading, setIsLoading] = useState(true);
   const [isVideoSectionVisible, setIsVideoSectionVisible] = useState(false);
   const [isApproachSectionVisible, setIsApproachSectionVisible] = useState(false);
   const [isFocusSectionVisible, setIsFocusSectionVisible] = useState(false);
@@ -19,23 +21,36 @@ export function ThingiraInitiative() {
   const focusSectionRef = useRef(null);
 
   useEffect(() => {
-    const observers = [
-      { ref: videoSectionRef, setter: setIsVideoSectionVisible },
-      { ref: approachSectionRef, setter: setIsApproachSectionVisible },
-      { ref: focusSectionRef, setter: setIsFocusSectionVisible }
-    ];
-
-    const observerInstances = observers.map(({ ref, setter }) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => setter(entry.isIntersecting),
-        { threshold: 0.2 }
-      );
-      if (ref.current) observer.observe(ref.current);
-      return observer;
-    });
-
-    return () => observerInstances.forEach(observer => observer.disconnect());
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1300);
+    return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const observers = [
+        { ref: videoSectionRef, setter: setIsVideoSectionVisible },
+        { ref: approachSectionRef, setter: setIsApproachSectionVisible },
+        { ref: focusSectionRef, setter: setIsFocusSectionVisible }
+      ];
+
+      const observerInstances = observers.map(({ ref, setter }) => {
+        const observer = new IntersectionObserver(
+          ([entry]) => setter(entry.isIntersecting),
+          { threshold: 0.2 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return observer;
+      });
+
+      return () => observerInstances.forEach(observer => observer.disconnect());
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

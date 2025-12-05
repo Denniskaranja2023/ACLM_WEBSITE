@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card";
 import { CardContent } from "../components/ui/CardContent";
+import { LoadingPage } from "../components/ui/LoadingPage";
 import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Lightbulb, Send, CheckCircle } from "lucide-react";
 
 export function SupportUs() {
+  const [isLoading, setIsLoading] = useState(true);
   const [volunteerForm, setVolunteerForm] = useState({
     name: "",
     email: "",
@@ -15,6 +17,13 @@ export function SupportUs() {
   const [customAmount, setCustomAmount] = useState("");
   const [mpesaNumber, setMpesaNumber] = useState("");
   const [selectedMethod, setSelectedMethod] = useState("paypal");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1100);
+    return () => clearTimeout(timer);
+  }, []);
 
 const handleVolunteerSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +39,7 @@ const handleVolunteerSubmit = (e) => {
     });
   };
 
-  const handleDonation = (method) => {
+  const handleDonation = async (method) => {
     setSelectedMethod(method);
     const amount = donationAmount === "custom" ? customAmount : donationAmount;
     
@@ -44,7 +53,32 @@ const handleVolunteerSubmit = (e) => {
         alert("Please enter your M-Pesa number");
         return;
       }
-      alert(`M-Pesa payment initiated for KES ${amount}. You will receive an STK push prompt on ${mpesaNumber}`);
+      
+      try {
+        const orderId = `ACLM-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        const response = await fetch('/api/pay-mpesa', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            phone: mpesaNumber,
+            amount: amount,
+            orderId: orderId
+          })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          alert(`STK push initiated successfully! Please check your phone ${mpesaNumber} for the payment prompt. Order ID: ${orderId}`);
+        } else {
+          alert(`Payment failed: ${result.message}`);
+        }
+      } catch (error) {
+        console.error('Payment error:', error);
+        alert(`Error initiating payment: ${error.message}`);
+      }
     } else {
       alert(`Redirecting to PayPal to process your donation of $${amount}...`);
       // In production, this would redirect to PayPal
@@ -53,6 +87,10 @@ const handleVolunteerSubmit = (e) => {
   };
 
   const predefinedAmounts = ["500", "1000", "2500", "5000", "10000"];
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
+import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play } from "lucide-react";
 
 const slideshowImages = [
@@ -67,8 +68,16 @@ const videos = [
 ];
 
 export function Kenya() {
+  const [isLoading, setIsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1300);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -86,6 +95,10 @@ export function Kenya() {
   const closeVideo = () => {
     setSelectedVideo(null);
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

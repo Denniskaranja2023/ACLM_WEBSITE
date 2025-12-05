@@ -6,7 +6,7 @@ import { Users, BookOpen, Globe, Target, ArrowRight } from "lucide-react";
 import IssuingBalls from "../../images/Issuing-balls-thingira.jpeg"
 import Literature from "../../images/Discipleship-Literature-Mozambique.jpeg"
 import TrainingSeminar from "../../images/Training-seminar.jpeg"
-import EvangelismTraining from "../../images/Evangelism training-mozambique.jpeg"
+import LeoInMocuba from "../../images/Leonard-in-Mocuba.jpeg"
 
 const pillars = [
   {
@@ -25,7 +25,7 @@ const pillars = [
     id: "mission-mobilization",
     title: "Mission Mobilization",
     description: "Connecting people with mission opportunities and mobilizing the church for evangelism across Africa.",
-    image: EvangelismTraining
+    image: LeoInMocuba
   },
   {
     id: "thingira-initiative",

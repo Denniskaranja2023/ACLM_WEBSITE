@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { LoadingPage } from "../components/ui/LoadingPage";
 import { Download, FileText, Calendar } from "lucide-react";
 
 // Import PDF files
@@ -43,7 +44,15 @@ const missionReports = [
 ];
 
 export function MissionReports() {
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedReport, setSelectedReport] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleDownload = (pdf, title) => {
     const link = document.createElement('a');
@@ -53,6 +62,10 @@ export function MissionReports() {
     link.click();
     document.body.removeChild(link);
   };
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>
