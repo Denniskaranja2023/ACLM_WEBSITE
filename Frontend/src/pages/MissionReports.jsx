@@ -181,7 +181,7 @@ export function MissionReports() {
               </div>
 
               {/* PDF Viewer */}
-              <div className="relative" style={{ height: "80vh" }}>
+              <div className="relative h-[60vh] sm:h-[70vh] md:h-[80vh]">
                 <iframe
                   src={`${selectedReport.pdf}#toolbar=1&navpanes=1&scrollbar=1`}
                   className="w-full h-full border-0"
@@ -189,13 +189,14 @@ export function MissionReports() {
                 />
                 
                 {/* Download Button Overlay */}
-                <div className="absolute bottom-4 right-4">
+                <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4">
                   <button
                     onClick={() => handleDownload(selectedReport.pdf, selectedReport.title)}
-                    className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all hover:scale-105"
+                    className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-3 py-2 sm:px-6 sm:py-3 rounded-lg shadow-lg flex items-center gap-1 sm:gap-2 transition-all hover:scale-105 text-sm sm:text-base"
                   >
-                    <Download className="w-5 h-5" />
-                    <span>Download PDF</span>
+                    <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">Download PDF</span>
+                    <span className="sm:hidden">Download</span>
                   </button>
                 </div>
               </div>

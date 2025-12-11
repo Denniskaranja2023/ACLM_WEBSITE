@@ -27,11 +27,30 @@ export function SupportUs() {
     return () => clearTimeout(timer);
   }, []);
 
-const handleVolunteerSubmit = (e) => {
+const handleVolunteerSubmit = async (e) => {
     e.preventDefault();
-    console.log("Volunteer form submitted:", volunteerForm);
-    alert("Thank you for your interest in volunteering with ACLM! We'll be in touch soon.");
-    setVolunteerForm({ name: "", email: "", contact: "", howToVolunteer: "" });
+    
+    try {
+      const response = await fetch('http://localhost:3000/api/send-volunteer-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(volunteerForm)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("Thank you for your interest in volunteering with ACLM! We'll be in touch soon.");
+        setVolunteerForm({ name: "", email: "", contact: "", howToVolunteer: "" });
+      } else {
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Error submitting form. Please try again.');
+    }
   };
 
   const handleVolunteerChange = (e) => {
@@ -39,6 +58,16 @@ const handleVolunteerSubmit = (e) => {
       ...volunteerForm,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handlePayPalDonate = (amount) => {
+    const paypalEmail = "deninokaranja@gmail.com";
+    const currency = "USD";
+    const description = "Donation to ACLM - African Christian Leadership Mission";
+    
+    const paypalUrl = `https://www.paypal.com/donate/?business=${paypalEmail}&amount=${amount}&currency_code=${currency}&item_name=${encodeURIComponent(description)}`;
+    
+    window.open(paypalUrl, '_blank');
   };
 
   const handleDonation = async (method) => {
@@ -58,7 +87,7 @@ const handleVolunteerSubmit = (e) => {
       
       try {
         const orderId = `ACLM${Date.now().toString().slice(-6)}${Math.random().toString(36).substr(2, 4)}`;
-        const response = await fetch('/api/pay-mpesa', {
+        const response = await fetch('http://localhost:3000/api/pay-mpesa', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -82,9 +111,9 @@ const handleVolunteerSubmit = (e) => {
         alert(`Error initiating payment: ${error.message}`);
       }
     } else {
-      alert(`Redirecting to PayPal to process your donation of $${amount}...`);
-      // In production, this would redirect to PayPal
-      // window.location.href = `https://www.paypal.com/donate?amount=${amount}&...`;
+      // Convert KES to USD (approximate rate: 1 USD = 130 KES)
+      const usdAmount = (parseFloat(amount) / 130).toFixed(2);
+      handlePayPalDonate(usdAmount);
     }
   };
 
@@ -359,8 +388,8 @@ const handleVolunteerSubmit = (e) => {
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-lg bg-green-600 flex items-center justify-center">
-                            <Smartphone className="w-6 h-6 text-white" />
+                          <div className="w-16 h-16 rounded-lg bg-white border flex items-center justify-center p-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" alt="M-Pesa" className="w-full h-full object-contain" />
                           </div>
                           <div className="text-left">
                             <div className="text-[#2E652A]">M-Pesa</div>
@@ -394,8 +423,8 @@ const handleVolunteerSubmit = (e) => {
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-lg bg-[#0070BA] flex items-center justify-center">
-                          <CreditCard className="w-6 h-6 text-white" />
+                        <div className="w-16 h-16 rounded-lg bg-white border flex items-center justify-center p-2">
+                          <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal" className="w-full h-full object-contain" />
                         </div>
                         <div className="text-left">
                           <div className="text-[#2E652A]">PayPal</div>

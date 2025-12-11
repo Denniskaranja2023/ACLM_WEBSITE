@@ -66,7 +66,7 @@ export function ThingiraInitiative() {
             <div className={`float-left mr-8 mb-6 w-full md:w-96 transition-all duration-1800 delay-600 ${isVideoSectionVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-20 scale-90'}`}>
               <div className="aspect-video">
                 <iframe
-                  src="https://www.youtube.com/embed/9G8GpNySm-U"
+                  src="https://www.youtube.com/embed/fFvqq7biHWo"
                   title="Thingira Initiative Video"
                   className="w-full h-full rounded-lg"
                   frameBorder="0"
@@ -74,6 +74,12 @@ export function ThingiraInitiative() {
                   allowFullScreen
                 ></iframe>
               </div>
+              <button 
+                onClick={() => window.open('https://www.youtube.com/shorts/fFvqq7biHWo', '_blank')}
+                className="block mt-2 w-full text-center text-[#2E652A] hover:underline text-sm cursor-pointer bg-transparent border-none"
+              >
+                View On YouTube
+              </button>
             </div>
             
             <div className={`transition-all duration-1600 delay-900 ${isVideoSectionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
