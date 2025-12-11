@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card";
 import { CardContent } from "../components/ui/CardContent";
 import { LoadingPage } from "../components/ui/LoadingPage";
+import Donate from "../images/Donate.webp"
+import Volunteer from "../images/Volunteer.jpg"
 import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Lightbulb, Send, CheckCircle } from "lucide-react";
 
 export function SupportUs() {
@@ -55,7 +57,7 @@ const handleVolunteerSubmit = (e) => {
       }
       
       try {
-        const orderId = `ACLM-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        const orderId = `ACLM${Date.now().toString().slice(-6)}${Math.random().toString(36).substr(2, 4)}`;
         const response = await fetch('/api/pay-mpesa', {
           method: 'POST',
           headers: {
@@ -71,7 +73,7 @@ const handleVolunteerSubmit = (e) => {
         const result = await response.json();
         
         if (result.success) {
-          alert(`STK push initiated successfully! Please check your phone ${mpesaNumber} for the payment prompt. Order ID: ${orderId}`);
+          alert(`Donation initiated successfully! Please check your phone ${mpesaNumber} for the payment prompt. Order ID: ${orderId}`);
         } else {
           alert(`Payment failed: ${result.message}`);
         }
@@ -172,7 +174,7 @@ const handleVolunteerSubmit = (e) => {
               <Card className="h-full shadow-2xl border-t-4 border-[#2E652A] overflow-hidden">
                 <div className="relative h-64 bg-cover bg-center"
                   style={{ 
-                    backgroundImage: `url(https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2b2x1bnRlZXIlMjBoZWxwaW5nJTIwaGFuZHN8ZW58MXx8fHwxNzYzNzI0OTUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)` 
+                    backgroundImage: `url(${Volunteer})` 
                   }}>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -273,7 +275,7 @@ const handleVolunteerSubmit = (e) => {
               <Card className="h-full shadow-2xl border-t-4 border-[#BEA336] overflow-hidden">
                 <div className="relative h-64 bg-cover bg-center"
                   style={{ 
-                    backgroundImage: `url(https://images.unsplash.com/photo-1576826631935-d0c8e250fdc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkb25hdGlvbiUyMGdpdmluZyUyMGNoYXJpdHl8ZW58MXx8fHwxNzYzNzI0OTUzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)` 
+                    backgroundImage: `url(${Donate})` 
                   }}>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
