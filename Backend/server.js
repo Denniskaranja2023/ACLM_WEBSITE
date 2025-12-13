@@ -18,6 +18,47 @@ app.get('/api/test', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+// API: SEND NEWSLETTER SUBSCRIPTION
+app.post("/api/newsletter-subscribe", async (req, res) => {
+  console.log('Newsletter subscription:', req.body);
+  
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({
+      success: false,
+      message: "Email is required",
+    });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: "denniswanyeki2021@gmail.com",
+      subject: "New Newsletter and Mission reports Subscription - ACLM",
+      html: `
+        <h2>New Newsletter Subscription</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subscribed on:</strong> ${new Date().toLocaleString()}</p>
+      `,
+    });
+
+    console.log("Newsletter subscription email sent successfully");
+    res.json({ success: true, message: "Subscription successful" });
+  } catch (error) {
+    console.error("Newsletter subscription error:", error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 // API: SEND VOLUNTEER EMAIL
 app.post("/api/send-volunteer-email", async (req, res) => {
   console.log('Received request:', req.body);
@@ -62,8 +103,49 @@ app.post("/api/send-volunteer-email", async (req, res) => {
   }
 });
 
+// API: CONTACT FORM
+app.post("/api/contact-us", async (req, res) => {
+  const {name, email, subject, message} = req.body
+
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({
+      success: false,
+      message: "All fields are required",
+    });
+  }
+  try{
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: "denniswanyeki2021@gmail.com",
+      subject: `Contact Message from ${name} on ACLM Website`,
+      html: `
+        <h2>${subject}</h2>
+        <p>Dear sir/madam,<p>
+        <p>${message}</p>
+        <p><strong>Yours truly, ${name}</strong></p>
+        <p><strong>Email:</strong> ${email}</p>
+      `,
+    });
+    console.log("Email sent successfully");
+    res.json({ success: true, message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Email error:", error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+})
+
 // API: TRIGGER STK PUSH
 app.post("/api/pay-mpesa", async (req, res) => {
+  console.log('M-Pesa request:', req.body);
+  
   const { phone, amount, orderId } = req.body;
 
   if (!phone || !amount || !orderId) {
@@ -74,9 +156,12 @@ app.post("/api/pay-mpesa", async (req, res) => {
   }
 
   try {
+    console.log('Initiating STK Push for:', { phone, amount, orderId });
     const response = await initiateSTKPush(phone, amount, orderId);
+    console.log('STK Push response:', response);
     res.json({ success: true, data: response });
   } catch (error) {
+    console.error('STK Push error:', error.message);
     res.status(500).json({ success: false, message: error.message });
   }
 });

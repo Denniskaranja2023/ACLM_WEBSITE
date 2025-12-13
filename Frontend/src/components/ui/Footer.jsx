@@ -7,11 +7,30 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [showProjectsDropdown, setShowProjectsDropdown] = useState(false);
   
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription:", email);
-    setEmail("");
+    
+    try {
+      const response = await fetch('http://localhost:3000/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email })
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("Thank you for subscribing to our newsletter!");
+        setEmail("");
+      } else {
+        alert(`Error: ${result.message}`);
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      alert('Error subscribing to newsletter. Please try again.');
+    }
   };
   
   const pageLinks = [

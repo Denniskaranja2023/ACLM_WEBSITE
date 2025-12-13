@@ -31,7 +31,7 @@ const handleVolunteerSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:3000/api/send-volunteer-email', {
+      const response = await fetch('/api/send-volunteer-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const handleVolunteerSubmit = async (e) => {
       
       try {
         const orderId = `ACLM${Date.now().toString().slice(-6)}${Math.random().toString(36).substr(2, 4)}`;
-        const response = await fetch('http://localhost:3000/api/pay-mpesa', {
+        const response = await fetch('/api/pay-mpesa', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
