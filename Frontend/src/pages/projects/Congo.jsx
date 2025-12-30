@@ -4,65 +4,69 @@ import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play } from "lucide-react";
+import Training1 from "../../images/2014-congo-evangelism-training.jpg"
+import Training2 from "../../images/Pst-Mwiti-Evangelism-cube.jpg"
+import EvangelismCubeTraining1 from "../../images/congo-evangelism-cube-training-2.jpg"
+import EvangelismCubeTraining2 from "../../images/training-many-people-evangelism-cube.jpg"
+import EvangelismCubeUse from "../../images/evangelism-cube-in-use.jpg"
+
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1598549865095-7a5c08adcf2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25nbyUyMG1pc3Npb24lMjB3b3JrfGVufDF8fHx8MTc2MzcyMjAxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1738744655193-706236bd4480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwY2h1cmNoJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc2MzcyMjAxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1741952094741-e7d3bb84e8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaXNzaW9uJTIwY29tbXVuaXR5JTIwc2VydmljZXxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  Training1, Training2, EvangelismCubeTraining2
 ];
 
 const projects = [
   {
     id: 1,
-    title: "Church Planter Support Network",
-    description: "Supporting indigenous church planters in the Democratic Republic of Congo with training, resources, and ongoing mentorship. Despite challenges of infrastructure and accessibility, we're partnering with local leaders to establish churches in unreached communities, bringing the light of the Gospel to regions where Christ is not yet known.",
-    caption: "Local church planters gathering for training and fellowship in Congo",
-    image: "https://images.unsplash.com/photo-1741952094741-e7d3bb84e8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaXNzaW9uJTIwY29tbXVuaXR5JTIwc2VydmljZXxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    title: "Evangelism Trainings and Workshops",
+    description: "Through our partnerships with different churches in Congo, we continue to train and equip believers with the practical knowledge of how to share the gospel and how to walk with converts in discipleship",
+    images: [Training1, Training2],
+    captions: [
+      "Pastor Mwiti training church members in Congo on evangelism",
+      "An evangelism training in session"
+    ]
   },
   {
     id: 2,
-    title: "French Christian Literature Translation",
-    description: "Translating and distributing essential Christian literature in French to serve the Francophone communities of Congo. We're making discipleship resources, Bible study materials, and theological books accessible to pastors and believers who primarily speak French, empowering them with tools for spiritual growth.",
-    caption: "French Christian literature being distributed to pastors and church leaders",
-    image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    title: "Distribution of Christian Literature",
+    description: "Seeing how important Christian Literature is both for evangelism and discipleship, we endeavour to provide this for the growing church of Congo. We distinctly distribute evangelism cubes which we also train church members to use. The evangelism cube is a clear and graphical way to share the good news of Jesus' death and ressurection",
+    images: [EvangelismCubeTraining2, EvangelismCubeUse, EvangelismCubeTraining1],
+    captions: [
+      "Envangelism cubes in use during a training session",
+      "Evangelism cube being used in practical ministry",
+      "Evangelism cubes distributed to church members"
+    ]
   },
-  {
-    id: 3,
-    title: "Missionary Family Care Program",
-    description: "Providing practical and spiritual support to missionary families serving in Congo. Through financial assistance, prayer networks, and periodic visits, we ensure that those who've answered the call to serve in challenging contexts are well-supported, enabling them to focus on their mission work with peace of mind.",
-    caption: "Missionary families receiving support and encouragement in Congo",
-    image: "https://images.unsplash.com/photo-1632723188354-7ba967c218bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHJpc3RpYW4lMjBsZWFkZXJzaGlwJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzYzNjcwNzM2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  }
 ];
 
 const videos = [
   {
     id: 1,
-    title: "Church Planting in Rural Congo",
-    description: "Follow our journey as we support church planters in remote areas of Congo, bringing hope to unreached communities.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Evangelism Training in Congo",
+    description: "Watch how we train believers in Congo to effectively share the gospel using practical tools and methods.",
+    youtubeId: "WiKuxPmXzpI",
+    thumbnail: "https://img.youtube.com/vi/WiKuxPmXzpI/maxresdefault.jpg"
   },
   {
     id: 2,
-    title: "French Literature Impact Stories",
-    description: "Testimonies from Congolese pastors on how French Christian literature has transformed their ministries.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Church Leadership Development",
+    description: "See how we're developing strong church leaders across Congo through biblical training and mentorship.",
+    youtubeId: "t8Qw058Ydso",
+    thumbnail: "https://img.youtube.com/vi/t8Qw058Ydso/maxresdefault.jpg"
   },
   {
     id: 3,
-    title: "Missionary Life in Congo",
-    description: "An intimate look at the lives of missionaries in Congo and how ACLM's support makes their work possible.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Community Impact Stories",
+    description: "Testimonies from Congo showing how the gospel is transforming lives and communities.",
+    youtubeId: "ku5NJcsYeoo",
+    thumbnail: "https://img.youtube.com/vi/ku5NJcsYeoo/maxresdefault.jpg"
   }
 ];
 
 export function Congo() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [projectSlides, setProjectSlides] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,13 +83,21 @@ export function Congo() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-  };
-
-  const closeVideo = () => {
-    setSelectedVideo(null);
-  };
+  useEffect(() => {
+    const intervals = {};
+    projects.forEach(project => {
+      intervals[project.id] = setInterval(() => {
+        setProjectSlides(prev => ({
+          ...prev,
+          [project.id]: ((prev[project.id] || 0) + 1) % project.images.length
+        }));
+      }, 4000);
+    });
+    
+    return () => {
+      Object.values(intervals).forEach(interval => clearInterval(interval));
+    };
+  }, []);
 
   if (isLoading) {
     return <LoadingPage />;
@@ -94,7 +106,7 @@ export function Congo() {
   return (
     <div>
       {/* Slideshow Section */}
-      <div className="relative h-[600px] overflow-hidden">
+      <div className="relative h-[800px] overflow-hidden">
         {slideshowImages.map((image, index) => (
           <div
             key={index}
@@ -140,8 +152,8 @@ export function Congo() {
         <div className="text-center mb-12">
           <h2 className="text-[#2E652A] mb-4 text-4xl">Our Projects in Congo</h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Reaching the Francophone world with the Gospel through strategic partnerships, 
-            literature distribution, and church planting initiatives.
+            Reaching the Francophone world with the Gospel through strategic partnerships, evangelism and discipleship workshops and through 
+            literature distribution.
           </p>
         </div>
 
@@ -150,13 +162,36 @@ export function Congo() {
             <Card key={project.id} className="overflow-hidden">
               <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
                 <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-80 object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                    <p className="text-sm italic">{project.caption}</p>
+                  <div className="relative h-96 overflow-hidden">
+                    {project.images.map((image, imgIndex) => (
+                      <div
+                        key={imgIndex}
+                        className={`absolute inset-0 transition-opacity duration-1000 ${
+                          imgIndex === (projectSlides[project.id] || 0) ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        <img 
+                          src={image} 
+                          alt={`${project.title} - Image ${imgIndex + 1}`}
+                          className={`w-full h-full ${image === EvangelismCubeUse || image === EvangelismCubeTraining1 ? 'object-contain' : 'object-cover'}`}
+                        />
+                      </div>
+                    ))}
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
+                      <p className="text-sm italic">
+                        {project.captions[projectSlides[project.id] || 0]}
+                      </p>
+                    </div>
+                    <div className="absolute bottom-4 right-4 flex space-x-1">
+                      {project.images.map((_, imgIndex) => (
+                        <div
+                          key={imgIndex}
+                          className={`w-2 h-2 rounded-full ${
+                            imgIndex === (projectSlides[project.id] || 0) ? "bg-[#BEA336]" : "bg-white/50"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
@@ -184,36 +219,20 @@ export function Congo() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {videos.map((video) => (
-              <div 
-                key={video.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-                onClick={() => handleVideoClick(video)}
-              >
-                <div className="relative group">
-                  <img 
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#BEA336] flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
-                      <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs shadow-md flex items-center gap-1">
-                    <Play className="w-3 h-3" />
-                    YouTube
-                  </div>
+              <div key={video.id} className="bg-white rounded-xl shadow-md overflow-hidden">
+                <div className="aspect-video">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                    title={video.title}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
                 </div>
                 <div className="p-6">
                   <h3 className="text-[#2E652A] mb-3">{video.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    {video.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-[#BEA336] hover:text-[#2E652A] text-sm group">
-                    <span>Watch Now</span>
-                    <Play className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">{video.description}</p>
                 </div>
               </div>
             ))}
@@ -221,33 +240,6 @@ export function Congo() {
         </div>
       </div>
 
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" onClick={closeVideo}>
-          <div className="relative bg-white rounded-lg overflow-hidden max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={closeVideo}
-              className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
-            >
-              ×
-            </button>
-            <div className="aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
-                title={selectedVideo.title}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="p-6">
-              <h3 className="text-[#2E652A] text-xl mb-2">{selectedVideo.title}</h3>
-              <p className="text-gray-600">{selectedVideo.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

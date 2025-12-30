@@ -42,7 +42,7 @@ app.post("/api/newsletter-subscribe", async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "denniswanyeki2021@gmail.com",
+      to: "aclmregion@gmail.com",
       subject: "New Newsletter and Mission reports Subscription - ACLM",
       html: `
         <h2>New Newsletter Subscription</h2>
@@ -83,7 +83,7 @@ app.post("/api/send-volunteer-email", async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "denniswanyeki2021@gmail.com",
+      to: "aclmregion@gmail.com",
       subject: "New ACLM Volunteer Application",
       html: `
         <h2>New Volunteer Application</h2>
@@ -124,7 +124,7 @@ app.post("/api/contact-us", async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: "denniswanyeki2021@gmail.com",
+      to: "aclmregion@gmail.com",
       subject: `Contact Message from ${name} on ACLM Website`,
       html: `
         <h2>${subject}</h2>

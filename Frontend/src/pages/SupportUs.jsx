@@ -528,18 +528,18 @@ const handleVolunteerSubmit = async (e) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:giving@aclmkenya.org"
+              href="mailto:aclmregion@gmail.com"
               className="inline-flex items-center justify-center gap-2 bg-[#2E652A] hover:bg-[#234d21] text-white px-6 py-3 rounded-lg transition-colors"
             >
               <Send className="w-5 h-5" />
-              giving@aclmkenya.org
+              aclmregion@gmail.com
             </a>
             <a
-              href="tel:+254722778872"
+              href="tel:+254722458513"
               className="inline-flex items-center justify-center gap-2 bg-[#BEA336] hover:bg-[#a08d2d] text-white px-6 py-3 rounded-lg transition-colors"
             >
               <Smartphone className="w-5 h-5" />
-              +254 722 778 872
+              +254 722 458 513
             </a>
           </div>
         </div>

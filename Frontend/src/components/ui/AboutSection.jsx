@@ -52,13 +52,12 @@ export function AboutSection() {
               Our mission is to develop leaders through Christian discipleship (2 Timothy 2:2). 
               We organize and facilitate evangelism and mission training, providing materials for 
               evangelism and discipleship. By God's grace, we have worked in Uganda, Rwanda, 
-              Burundi, Congo, and Mozambique, and support missionaries in Mozambique and Cambodia.
+              Burundi, Congo, and Mozambique, and support missionaries in Mozambique and Uganda.
             </p>
             <p className="text-gray-700 leading-relaxed mt-4 text-justify">
               We catalyze foreign missions by providing cover for called individuals, skill training 
               in evangelism and discipleship for pastors, and serving as a reference point for mercy 
-              initiatives and pioneering work in health, education, food security, and water provision 
-              for communities.
+              initiatives.
             </p>
           </div>
         </div>
