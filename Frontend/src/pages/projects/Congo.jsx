@@ -42,22 +42,22 @@ const projects = [
 const videos = [
   {
     id: 1,
-    title: "Evangelism Training in Congo",
-    description: "Watch how we train believers in Congo to effectively share the gospel using practical tools and methods.",
+    title: "Ministry to pygmies",
+    description: "A company of pygmy men share with a local ACLM missionary about the harrowing effects of the Congo war as he shares the gospel",
     youtubeId: "WiKuxPmXzpI",
     thumbnail: "https://img.youtube.com/vi/WiKuxPmXzpI/maxresdefault.jpg"
   },
   {
     id: 2,
-    title: "Church Leadership Development",
-    description: "See how we're developing strong church leaders across Congo through biblical training and mentorship.",
+    title: "Evangelism by the Cube",
+    description: "Our missionary in Congo shares the gospel with a local using the evangelism cube",
     youtubeId: "t8Qw058Ydso",
     thumbnail: "https://img.youtube.com/vi/t8Qw058Ydso/maxresdefault.jpg"
   },
   {
     id: 3,
-    title: "Community Impact Stories",
-    description: "Testimonies from Congo showing how the gospel is transforming lives and communities.",
+    title: "A time of fellowship",
+    description: "Our missionaries enjoying a time of singing with Congolese believers.",
     youtubeId: "ku5NJcsYeoo",
     thumbnail: "https://img.youtube.com/vi/ku5NJcsYeoo/maxresdefault.jpg"
   }

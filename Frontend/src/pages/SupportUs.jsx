@@ -8,6 +8,7 @@ import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Li
 
 export function SupportUs() {
   const [isLoading, setIsLoading] = useState(true);
+  const [counters, setCounters] = useState({ leaders: 0, countries: 0, pillars: 0 });
   const [volunteerForm, setVolunteerForm] = useState({
     name: "",
     email: "",
@@ -26,6 +27,38 @@ export function SupportUs() {
     }, 1100);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const animateCounters = () => {
+        const targets = { leaders: 500, countries: 4, pillars: 4 };
+        const duration = 2000; // 2 seconds
+        const steps = 60;
+        const stepDuration = duration / steps;
+        
+        let currentStep = 0;
+        
+        const interval = setInterval(() => {
+          currentStep++;
+          const progress = currentStep / steps;
+          
+          setCounters({
+            leaders: Math.floor(targets.leaders * progress),
+            countries: Math.floor(targets.countries * progress),
+            pillars: Math.floor(targets.pillars * progress)
+          });
+          
+          if (currentStep >= steps) {
+            setCounters(targets);
+            clearInterval(interval);
+          }
+        }, stepDuration);
+      };
+      
+      // Start animation after a short delay
+      setTimeout(animateCounters, 500);
+    }
+  }, [isLoading]);
 
 const handleVolunteerSubmit = async (e) => {
     e.preventDefault();
@@ -130,7 +163,7 @@ const handleVolunteerSubmit = async (e) => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url(https://images.unsplash.com/photo-1763050234301-b623bdf88749?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBzdXBwb3J0JTIwYWZyaWNhfGVufDF8fHx8MTc2MzcyNDk1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)` 
+            backgroundImage: `url(https://images.unsplash.com/photo-1559027615-cd4628902d4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2b2x1bnRlZXIlMjBoYW5kcyUyMGFmcmljYXxlbnwxfHx8fDE3NjM3MjQ5NTR8MA&ixlib=rb-4.1.0&q=80&w=1080)` 
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#2E652A]/95 via-[#2E652A]/85 to-[#2E652A]/90" />
@@ -164,26 +197,35 @@ const handleVolunteerSubmit = async (e) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="text-center p-8 hover:shadow-xl transition-shadow border-t-4 border-[#BEA336]">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F6EFE2] mb-4">
-                <Users className="w-8 h-8 text-[#2E652A]" />
+            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-[#BEA336] bg-gradient-to-br from-white to-[#F6EFE2]/30 hover:scale-105">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#BEA336] to-[#a08d2d] mb-6 shadow-lg">
+                <Users className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-[#2E652A] mb-2 text-xl">500+ Leaders</h3>
-              <p className="text-gray-600">Trained and equipped for ministry across Africa</p>
+              <div className="mb-4">
+                <h3 className="text-[#BEA336] text-5xl font-black mb-2 tracking-tight">{counters.leaders}+</h3>
+                <p className="text-[#2E652A] text-xl font-semibold">Leaders</p>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">Trained and equipped for ministry across Africa</p>
             </Card>
-            <Card className="text-center p-8 hover:shadow-xl transition-shadow border-t-4 border-[#BEA336]">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F6EFE2] mb-4">
-                <Target className="w-8 h-8 text-[#2E652A]" />
+            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-[#BEA336] bg-gradient-to-br from-white to-[#F6EFE2]/30 hover:scale-105">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#BEA336] to-[#a08d2d] mb-6 shadow-lg">
+                <Target className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-[#2E652A] mb-2 text-xl">4 Countries</h3>
-              <p className="text-gray-600">Active missions and leadership programs</p>
+              <div className="mb-4">
+                <h3 className="text-[#BEA336] text-5xl font-black mb-2 tracking-tight">{counters.countries}</h3>
+                <p className="text-[#2E652A] text-xl font-semibold">Countries</p>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">Active missions and leadership programs</p>
             </Card>
-            <Card className="text-center p-8 hover:shadow-xl transition-shadow border-t-4 border-[#BEA336]">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F6EFE2] mb-4">
-                <Lightbulb className="w-8 h-8 text-[#2E652A]" />
+            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 border-t-4 border-[#BEA336] bg-gradient-to-br from-white to-[#F6EFE2]/30 hover:scale-105">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#BEA336] to-[#a08d2d] mb-6 shadow-lg">
+                <Lightbulb className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-[#2E652A] mb-2 text-xl">4 Pillars</h3>
-              <p className="text-gray-600">Comprehensive leadership development approach</p>
+              <div className="mb-4">
+                <h3 className="text-[#BEA336] text-5xl font-black mb-2 tracking-tight">{counters.pillars}</h3>
+                <p className="text-[#2E652A] text-xl font-semibold">Pillars</p>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">Comprehensive leadership development approach</p>
             </Card>
           </div>
         </div>

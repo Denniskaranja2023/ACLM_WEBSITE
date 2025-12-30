@@ -3,53 +3,54 @@ import { LoadingPage } from "../components/ui/LoadingPage";
 import { ExternalLink, Play, Film } from "lucide-react";
 
 const videos = [
+  // Congo Videos
   {
     id: 1,
-    title: "ACLM Leadership Training Impact",
-    description: "Watch how our leadership training programs have transformed pastors and church leaders across Kenya and East Africa.",
-    youtubeId: "dQw4w9WgXcQ", // Placeholder YouTube video ID
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Ministry to pygmies",
+    description: "A company of pygmy men share with a local ACLM missionary about the harrowing effects of the Congo war as he shares the gospel",
+    youtubeId: "WiKuxPmXzpI",
+    country: "Congo"
   },
   {
     id: 2,
-    title: "Thingira Initiative - Empowering Young Men",
-    description: "A glimpse into our Thingira Initiative and how we're helping young men discover biblical manhood.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Evangelism by the Cube",
+    description: "Our missionary in Congo shares the gospel with a local using the evangelism cube",
+    youtubeId: "t8Qw058Ydso",
+    country: "Congo"
   },
   {
     id: 3,
-    title: "Mission Trip to Burundi 2023",
-    description: "Join us on our recent mission trip to Burundi where we trained church leaders and distributed Christian literature.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "A time of fellowship",
+    description: "Our missionaries enjoying a time of singing with Congolese believers.",
+    youtubeId: "ku5NJcsYeoo",
+    country: "Congo"
   },
+  // Mozambique Videos
   {
     id: 4,
-    title: "Evangelism Cube Distribution",
-    description: "See how the Evangelism Cube is being used across Africa to share the Gospel effectively.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "A walk through the Bush",
+    description: "A local believer recounts to our missionary the evils of witchcraft as they walk through the bushes of Mugulama village",
+    youtubeId: "LzX0wQLWoxA",
+    country: "Mozambique"
   },
   {
     id: 5,
-    title: "Partnership Stories - Supporting Missionaries",
-    description: "Hear testimonies from missionaries we've supported through our mission mobilization efforts.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Rejoice in the Lord",
+    description: "Our Missionary, Kennedy, shares a moment of joy with Mozambican believers through joyful singing to the Lord",
+    youtubeId: "mkkDZ5_EwHs",
+    country: "Mozambique"
   },
   {
     id: 6,
-    title: "ACLM 10 Year Anniversary Celebration",
-    description: "Celebrating a decade of developing leaders through Christian discipleship across Africa.",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+    title: "Discipling the youth",
+    description: "Leonard shares a moment with Mozambican church youth.",
+    youtubeId: "JS2OvIKMaOY",
+    country: "Mozambique"
   }
 ];
 
 export function OurStories() {
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -57,14 +58,6 @@ export function OurStories() {
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
-
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-  };
-
-  const closeVideo = () => {
-    setSelectedVideo(null);
-  };
 
   if (isLoading) {
     return <LoadingPage />;
@@ -89,11 +82,6 @@ export function OurStories() {
           <p className="text-[#F6EFE2] text-lg md:text-xl max-w-3xl mx-auto mb-4 leading-relaxed">
             Every story is a testimony. Every testimony is a journey. Every journey transforms lives.
           </p>
-          <p className="text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Witness the power of God at work through ACLM's ministry across Africa. From leadership trainings 
-            that ignite passion, to mission trips that spread hope, to lives transformed by discipleship—these 
-            are the stories that fuel our mission.
-          </p>
         </div>
       </div>
 
@@ -111,43 +99,29 @@ export function OurStories() {
         <div className="mb-12 text-center">
           <h2 className="text-[#2E652A] mb-4 text-3xl">Watch & Be Inspired</h2>
           <p className="text-gray-600">
-            Click any video to watch on YouTube
+            Watch our ministry stories from Congo and Mozambique
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videos.map((video) => (
-            <div 
-              key={video.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-[#BEA336]"
-              onClick={() => handleVideoClick(video)}
-            >
-              <div className="relative group">
-                <img 
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-48 object-cover"
-                />
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#BEA336] flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
-                    <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                  </div>
-                </div>
-                <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs shadow-md flex items-center gap-1">
-                  <Play className="w-3 h-3" />
-                  YouTube
-                </div>
+            <div key={video.id} className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                  title={video.title}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
               <div className="p-6">
-                <h3 className="text-[#2E652A] mb-3 group-hover:text-[#BEA336] transition-colors">{video.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                  {video.description}
-                </p>
-                <div className="flex items-center gap-2 text-[#BEA336] hover:text-[#2E652A] text-sm group">
-                  <span>Watch Now</span>
-                  <Play className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs bg-[#BEA336] text-white px-2 py-1 rounded">{video.country}</span>
                 </div>
+                <h3 className="text-[#2E652A] mb-3">{video.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{video.description}</p>
               </div>
             </div>
           ))}
@@ -170,33 +144,6 @@ export function OurStories() {
         </div>
       </div>
 
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" onClick={closeVideo}>
-          <div className="relative bg-white rounded-lg overflow-hidden max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={closeVideo}
-              className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
-            >
-              ×
-            </button>
-            <div className="aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
-                title={selectedVideo.title}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="p-6">
-              <h3 className="text-[#2E652A] text-xl mb-2">{selectedVideo.title}</h3>
-              <p className="text-gray-600">{selectedVideo.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

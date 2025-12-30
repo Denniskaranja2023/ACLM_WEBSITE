@@ -116,7 +116,7 @@ export function Footer() {
             <h4 className="text-[#BEA336] mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://web.facebook.com/aclminternational"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#BEA336] transition-colors"
