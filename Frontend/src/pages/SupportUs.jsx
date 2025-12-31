@@ -94,7 +94,7 @@ const handleVolunteerSubmit = async (e) => {
   };
 
   const handlePayPalDonate = (amount) => {
-    const paypalEmail = "deninokaranja@gmail.com";
+    const paypalEmail = "aclmregion@gmail.com";
     const currency = "USD";
     const description = "Donation to ACLM - African Christian Leadership Mission";
     

@@ -3,43 +3,38 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, ArrowRight } from "lucide-react";
+import ThingiraMain from "../../images/Thingira_main.jpeg";
+import AllMen from "../../images/All men_Thingira.jpeg";
+import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.jpg";
+import Mobilization1 from "../../images/Mission-mobilization-mozambique-1.jpeg";
+import Mobilization2 from "../../images/Mission-Mobilization.jpeg";
+import Mobilization3 from "../../images/Mobilizing-through-evangelism-training.jpeg";
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1691348397911-77ecfd636078?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrZW55YSUyMG1pc3Npb24lMjBjb21tdW5pdHl8ZW58MXx8fHwxNzYzNzIyMDEyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1751358016973-88b94f5ca474?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxrZW55YSUyMGxlYWRlcnNoaXAlMjB0cmFpbmluZ3xlbnwxfHx8fDE3NjM3MjIwMTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1738744655193-706236bd4480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwY2h1cmNoJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc2MzcyMjAxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  ThingiraMain,
+  AllMen,
+  DistributingBalls
 ];
 
 const projects = [
   {
     id: 1,
-    title: "Church Leadership Development Program",
-    description: "A comprehensive program that equips pastors and church leaders across Kenya with biblical knowledge and practical ministry skills. We've trained over 500 church leaders in 15 counties, providing them with resources and ongoing mentorship to strengthen their churches and communities.",
-    caption: "Church leaders participating in a leadership development workshop in Kenya",
-    image: "https://images.unsplash.com/photo-1646579886135-068c73800308?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWFkZXJzaGlwJTIwdHJhaW5pbmclMjB3b3Jrc2hvcHxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  },
-  {
-    id: 2,
-    title: "Evangelism Cube Distribution",
-    description: "Distribution of the Evangelism Cube tool to churches and individual evangelists across Kenya. This innovative tool simplifies gospel presentation and has been instrumental in leading thousands to Christ. We've distributed over 10,000 cubes and trained users on effective evangelism techniques.",
-    caption: "Evangelism Cubes and Christian literature ready for distribution",
-    image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  },
-  {
-    id: 3,
-    title: "Rural Church Planting Initiative",
-    description: "Supporting the planting of new churches in underserved rural communities across Kenya. We provide initial resources, training, and ongoing support to church planters, helping establish vibrant Christian communities where the gospel had limited reach.",
-    caption: "Community gathering for the launch of a new church plant in rural Kenya",
-    image: "https://images.unsplash.com/photo-1741952094741-e7d3bb84e8fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaXNzaW9uJTIwY29tbXVuaXR5JTIwc2VydmljZXxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-  },
-  {
-    id: 4,
     title: "Thingira Initiative",
     description: "The Thingira Initiative is a transformative program focused on empowering young men across Kenya with biblical manhood principles. Through county-wide engagements, mentorship programs, and leadership camps, we're helping the boychild discover their God-given identity and purpose. The initiative addresses critical issues facing young men today and equips them to be godly leaders in their families and communities.",
     caption: "Young men gathering for Thingira Initiative mentorship and leadership training",
-    image: "https://images.unsplash.com/photo-1732210038505-34a70d3b45a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1lbiUyMG1lZXRpbmd8ZW58MXx8fHwxNzYzNjcyODgwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    isThingira: true
+    image: ThingiraMain,
+    isThingira: true,
+    pillarPath: "/pillars/thingira-initiative"
+  },
+  {
+    id: 2,
+    title: "Mission Mobilization",
+    description: "Our Mission Mobilization pillar focuses on identifying, connecting, and supporting those called to missionary work across Africa and beyond. We work with churches and individuals to help identify those who have a calling to missions, connect them with opportunities, and provide ongoing support for their ministry journey.",
+    caption: "Training and mobilizing missionaries for effective ministry",
+    image: Mobilization3,
+    isMissionMobilization: true,
+    pillarPath: "/pillars/mission-mobilization"
   }
 ];
 
@@ -156,7 +151,7 @@ export function Kenya() {
 
         <div className="space-y-12">
           {projects.map((project) => (
-            <Card key={project.id} className={`overflow-hidden ${project.isThingira ? 'border-2 border-[#BEA336]' : ''}`}>
+            <Card key={project.id} className={`overflow-hidden ${project.isThingira ? 'border-2 border-[#BEA336]' : project.isMissionMobilization ? 'border-2 border-[#2E652A]' : ''}`}>
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="relative">
                   <img 
@@ -174,11 +169,24 @@ export function Kenya() {
                       Featured Initiative
                     </span>
                   )}
+                  {project.isMissionMobilization && (
+                    <span className="inline-block bg-[#2E652A] text-white px-3 py-1 rounded-full text-sm mb-4 w-fit">
+                      Core Pillar
+                    </span>
+                  )}
                   <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
+                  <p className="text-gray-700 mb-6 leading-relaxed">
                     {project.description}
                   </p>
-
+                  {project.pillarPath && (
+                    <button
+                      onClick={() => navigate(project.pillarPath)}
+                      className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-6 py-3 rounded-md transition-colors flex items-center gap-2 w-fit"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  )}
                 </CardContent>
               </div>
             </Card>

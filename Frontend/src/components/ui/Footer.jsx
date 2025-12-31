@@ -124,7 +124,7 @@ export function Footer() {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/aclm_kenya/?igsh=em01ajJua2R1bnFv#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#BEA336] transition-colors"
@@ -132,7 +132,7 @@ export function Footer() {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/ACLM_Kenya"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#BEA336] transition-colors"
