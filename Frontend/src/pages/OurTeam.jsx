@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../components/ui/Card";
 import { LoadingPage } from "../components/ui/LoadingPage";
 import { Mail, X, ChevronLeft, ChevronRight, Users } from "lucide-react";
@@ -39,6 +40,7 @@ const teamMembers = [
 ];
 
 export function OurTeam() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [selectedMember, setSelectedMember] = useState(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -263,12 +265,12 @@ export function OurTeam() {
             Support our leadership team as we develop Christian leaders across Africa. 
             Your partnership makes our work possible.
           </p>
-          <a 
-            href="/support-us"
+          <button
+            onClick={() => navigate("/support-us")}
             className="inline-block bg-[#BEA336] hover:bg-[#a08d2d] text-white px-6 md:px-8 py-3 md:py-4 rounded-lg transition-colors text-base md:text-lg"
           >
             Support Our Work
-          </a>
+          </button>
         </div>
       </div>
     </div>
