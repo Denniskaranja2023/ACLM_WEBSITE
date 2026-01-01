@@ -31,7 +31,7 @@ const projects = [
     id: 2,
     title: "Mission Mobilization",
     description: "Our Mission Mobilization pillar focuses on identifying, connecting, and supporting those called to missionary work across Africa and beyond. We work with churches and individuals to help identify those who have a calling to missions, connect them with opportunities, and provide ongoing support for their ministry journey.",
-    caption: "Training and mobilizing missionaries for effective ministry",
+    caption: "Training and mobilizing believers for effective ministry",
     image: Mobilization3,
     isMissionMobilization: true,
     pillarPath: "/pillars/mission-mobilization"
@@ -164,16 +164,6 @@ export function Kenya() {
                   </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
-                  {project.isThingira && (
-                    <span className="inline-block bg-[#BEA336] text-white px-3 py-1 rounded-full text-sm mb-4 w-fit">
-                      Featured Initiative
-                    </span>
-                  )}
-                  {project.isMissionMobilization && (
-                    <span className="inline-block bg-[#2E652A] text-white px-3 py-1 rounded-full text-sm mb-4 w-fit">
-                      Core Pillar
-                    </span>
-                  )}
                   <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
                   <p className="text-gray-700 mb-6 leading-relaxed">
                     {project.description}
@@ -199,46 +189,16 @@ export function Kenya() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-[#2E652A] mb-4 text-4xl">Stories from Kenya</h2>
-            <p className="text-gray-600">
-              Watch testimonies and highlights from our work across Kenya
+            <p className="text-gray-600 mb-8">
+              Discover inspiring testimonies and transformative stories from our work across Kenya
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videos.map((video) => (
-              <div 
-                key={video.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-                onClick={() => handleVideoClick(video)}
-              >
-                <div className="relative group">
-                  <img 
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#BEA336] flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
-                      <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs shadow-md flex items-center gap-1">
-                    <Play className="w-3 h-3" />
-                    YouTube
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[#2E652A] mb-3">{video.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    {video.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-[#BEA336] hover:text-[#2E652A] text-sm group">
-                    <span>Watch Now</span>
-                    <Play className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            ))}
+            <button
+              onClick={() => navigate("/our-stories")}
+              className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-8 py-4 text-lg rounded-md transition-colors inline-flex items-center gap-2"
+            >
+              Read Our Stories
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>

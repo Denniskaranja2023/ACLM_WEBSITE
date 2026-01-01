@@ -1,37 +1,55 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, ArrowRight } from "lucide-react";
+import ACLM1 from "../../images/ACLM 1.jpg";
+import EvangelismCube from "../../images/Evangelism cube.jpeg";
+import BaptismSession from "../../images/Baptism-in-session-mozambique.jpeg";
+import BaptismPrep from "../../images/Baptism-preparation-Mozambique.jpeg";
+import MercyMinistry from "../../images/Mercy ministry.jpeg";
+import Training from "../../images/ACLM 4.jpg"
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1656278345211-b98013b5cc57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1Z2FuZGElMjBjb21tdW5pdHklMjBwcm9qZWN0c3xlbnwxfHx8fDE3NjM3MjIwMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1738744655193-706236bd4480?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwY2h1cmNoJTIwZ2F0aGVyaW5nfGVufDF8fHx8MTc2MzcyMjAxM3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1632723188354-7ba967c218bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHJpc3RpYW4lMjBsZWFkZXJzaGlwJTIwdHJhaW5pbmd8ZW58MXx8fHwxNzYzNjcwNzM2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  ACLM1,
+  Training,
+  BaptismPrep
 ];
 
 const projects = [
   {
     id: 1,
-    title: "Pastoral Training & Equipping",
-    description: "We partner with local churches in Uganda to provide in-depth biblical training for pastors and church leaders. Our training modules cover theology, church administration, and practical ministry skills. Through workshops and seminars, we've empowered Ugandan pastors to better serve their congregations and communities.",
-    caption: "Pastors and church leaders during a training workshop in Uganda",
-    image: "https://images.unsplash.com/photo-1646579886135-068c73800308?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWFkZXJzaGlwJTIwdHJhaW5pbmclMjB3b3Jrc2hvcHxlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    title: "Church Leadership Development",
+    description: "Equipping pastors and church leaders across Uganda with biblical knowledge and practical ministry skills. Through comprehensive training programs, we strengthen local churches and develop godly leadership that can effectively shepherd their congregations and impact their communities for Christ.",
+    images: [
+      { image: Training, caption: "Church leaders gather for leadership development training" },
+    ]
   },
   {
     id: 2,
-    title: "Bible Distribution Program",
-    description: "Providing Bibles and Christian literature to churches and communities with limited access to Scripture. We've distributed thousands of Bibles in both English and local languages, along with discipleship materials that help new believers grow in their faith.",
-    caption: "Bibles and Christian literature being distributed to local communities",
-    image: "https://images.unsplash.com/photo-1709158990536-0cd97cd00345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaWJsZSUyMGJvb2tzJTIwcmVhZGluZ3xlbnwxfHx8fDE3NjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    title: "Evangelism & Discipleship Training",
+    description: "Training believers in effective evangelism methods and discipleship practices. We equip Ugandan Christians with practical tools like the Evangelism Cube and provide ongoing support to help them share their faith confidently and make disciples in their communities.",
+    images: [
+      { image: EvangelismCube, caption: "We distribute Evangelism Cubes and train on their use for effective gospel presentation" },
+    ]
   },
   {
     id: 3,
-    title: "Youth Ministry Development",
-    description: "Establishing and strengthening youth ministries across Uganda by training youth leaders and providing resources for effective youth outreach. Our program focuses on discipleship, leadership development, and equipping young people to be ambassadors for Christ in their schools and communities.",
-    caption: "Young people gathering for leadership development and discipleship training",
-    image: "https://images.unsplash.com/photo-1732210038505-34a70d3b45a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1lbiUyMG1lZXRpbmd8ZW58MXx8fHwxNjM2NzI4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    title: "New Believer Support",
+    description: "Supporting churches in baptism ceremonies and providing follow-up care for new believers. We help establish strong foundations for new converts through baptism preparation classes and ongoing discipleship programs that ensure sustainable spiritual growth.",
+    images: [
+      { image: BaptismSession, caption: "Baptism ceremony for new believers" },
+      { image: BaptismPrep, caption: "Baptism preparation for new believers" }
+    ]
+  },
+  {
+    id: 4,
+    title: "Community Mercy Ministry",
+    description: "Demonstrating Christ's love through practical service to communities in need. Our mercy ministry initiatives address physical and social needs while creating opportunities to share the Gospel and build relationships that lead to spiritual transformation and church growth.",
+    images: [
+      { image: MercyMinistry, caption: "Community mercy ministry serving those in need" },
+    ]
   }
 ];
 
@@ -62,6 +80,9 @@ const videos = [
 export function Uganda() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [projectSlides, setProjectSlides] = useState(projects.reduce((acc, project) => ({ ...acc, [project.id]: 0 }), {}));
+  const [isVideoSectionVisible, setIsVideoSectionVisible] = useState(false);
+  const videoSectionRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -77,6 +98,35 @@ export function Uganda() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const intervals = projects.map(project => 
+      setInterval(() => {
+        setProjectSlides(prev => ({
+          ...prev,
+          [project.id]: (prev[project.id] + 1) % project.images.length
+        }));
+      }, 7000)
+    );
+    return () => intervals.forEach(clearInterval);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsVideoSectionVisible(entry.isIntersecting);
+        },
+        { threshold: 0.2 }
+      );
+
+      if (videoSectionRef.current) {
+        observer.observe(videoSectionRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, [isLoading]);
 
   const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -150,22 +200,42 @@ export function Uganda() {
           {projects.map((project, index) => (
             <Card key={project.id} className="overflow-hidden">
               <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
-                <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-80 object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3">
-                    <p className="text-sm italic">{project.caption}</p>
+                <div className={`relative ${index % 2 === 1 ? 'md:col-start-2' : ''} overflow-hidden h-80`}>
+                  {project.images.map((imageData, imgIndex) => (
+                    <div
+                      key={imgIndex}
+                      className={`absolute inset-0 transition-transform duration-1000 ease-in-out ${
+                        imgIndex === projectSlides[project.id] ? "translate-x-0" : 
+                        imgIndex < projectSlides[project.id] ? "-translate-x-full" : "translate-x-full"
+                      }`}
+                    >
+                      <img 
+                        src={imageData.image} 
+                        alt={project.title}
+                        className="w-full h-80 object-cover"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3 text-center">
+                        <p className="text-sm italic">{imageData.caption}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="absolute top-4 right-4 flex space-x-1">
+                    {project.images.map((_, imgIndex) => (
+                      <button
+                        key={imgIndex}
+                        onClick={() => setProjectSlides(prev => ({ ...prev, [project.id]: imgIndex }))}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          imgIndex === projectSlides[project.id] ? "bg-[#BEA336]" : "bg-white/50"
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
                 <CardContent className="p-8 flex flex-col justify-center">
                   <h3 className="text-[#2E652A] mb-4 text-2xl">{project.title}</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
+                  <p className="text-gray-700 mb-4 leading-relaxed text-justify">
                     {project.description}
                   </p>
-
                 </CardContent>
               </div>
             </Card>
@@ -174,81 +244,24 @@ export function Uganda() {
       </div>
 
       {/* Stories from Uganda Section */}
-      <div className="bg-[#f5f5f4] py-16">
+      <div ref={videoSectionRef} className="bg-[#f5f5f4] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 transition-all duration-2000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isVideoSectionVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-32 scale-70'}`}>
             <h2 className="text-[#2E652A] mb-4 text-4xl">Stories from Uganda</h2>
-            <p className="text-gray-600">
-              Watch testimonies and highlights from our work across Uganda
+            <p className="text-gray-600 mb-8">
+              Discover inspiring testimonies and transformative stories from our work across Uganda
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videos.map((video) => (
-              <div 
-                key={video.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer"
-                onClick={() => handleVideoClick(video)}
-              >
-                <div className="relative group">
-                  <img 
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-[#BEA336] flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
-                      <Play className="w-8 h-8 text-white ml-1" fill="white" />
-                    </div>
-                  </div>
-                  <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs shadow-md flex items-center gap-1">
-                    <Play className="w-3 h-3" />
-                    YouTube
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-[#2E652A] mb-3">{video.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">
-                    {video.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-[#BEA336] hover:text-[#2E652A] text-sm group">
-                    <span>Watch Now</span>
-                    <Play className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-            ))}
+            <button
+              onClick={() => navigate("/our-stories")}
+              className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-8 py-4 text-lg rounded-md transition-colors inline-flex items-center gap-2"
+            >
+              Read Our Stories
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Video Modal */}
-      {selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" onClick={closeVideo}>
-          <div className="relative bg-white rounded-lg overflow-hidden max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={closeVideo}
-              className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center text-white transition-colors"
-            >
-              ×
-            </button>
-            <div className="aspect-video">
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
-                title={selectedVideo.title}
-                className="w-full h-full"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div className="p-6">
-              <h3 className="text-[#2E652A] text-xl mb-2">{selectedVideo.title}</h3>
-              <p className="text-gray-600">{selectedVideo.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

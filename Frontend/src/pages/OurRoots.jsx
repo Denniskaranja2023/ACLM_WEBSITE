@@ -3,9 +3,7 @@ import { PillarSlideShow } from "../components/ui/PillarSlideShow";
 import { LoadingPage } from "../components/ui/LoadingPage";
 
 const slideshowImages = [
-  "https://images.unsplash.com/photo-1581592717535-7f3e001bfa7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjBmb3VuZGVycyUyMG1lZXRpbmd8ZW58MXx8fHwxNzYzNzE2NjEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1551327420-4b280d52cc68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaHVyY2glMjBjb21tdW5pdHklMjBwcmF5ZXJ8ZW58MXx8fHwxNzYzNzE2NjEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  "https://images.unsplash.com/photo-1638866411154-35bbaf030f55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pc3RyeSUyMGJlZ2lubmluZ3xlbnwxfHx8fDE3NjM3MTY2MTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  "https://images.unsplash.com/photo-1638866411154-35bbaf030f55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxtaW5pc3RyeSUyMGJlZ2lubmluZ3xlbnwxfHx8fDE3NjM3MTY2MTR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
 ];
 
 export function OurRoots() {

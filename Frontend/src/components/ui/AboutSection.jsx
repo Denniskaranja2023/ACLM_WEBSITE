@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Target, Eye } from "lucide-react";
+import { Target, BookOpen } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export function AboutSection() {
@@ -62,7 +62,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Mission and Vision */}
+        {/* Mission and Our Story */}
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 transition-all duration-2200 delay-2000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${isVisible ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-48 scale-75'}`}>
           <div className={`bg-white p-8 rounded-lg shadow-sm transition-all duration-1600 delay-2400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform ${isVisible ? 'opacity-100 translate-y-0 rotate-0 scale-100' : 'opacity-0 translate-y-28 rotate-6 scale-80'}`}>
             <div className="flex items-center mb-4">
@@ -71,37 +71,40 @@ export function AboutSection() {
               </div>
               <h3 className="text-[#2E652A] font-bold">Our Mission</h3>
             </div>
-            <p className="text-gray-700">
+            <p className="text-gray-700 mb-4">
               To develop leaders through Christian discipleship (2 Timothy 2:2)
             </p>
+            <div className="bg-[#F6EFE2] p-4 rounded-lg mb-6">
+              <p className="text-gray-600 italic text-sm">
+                "And the things you have heard me say in the presence of many witnesses entrust to reliable people who will also be qualified to teach others." - 2 Timothy 2:2
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/our-stories")}
+              className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-4 py-2 rounded-md transition-colors"
+            >
+              Our Stories of Impact
+            </button>
           </div>
 
           <div className={`bg-white p-8 rounded-lg shadow-sm transition-all duration-1600 delay-2800 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform ${isVisible ? 'opacity-100 translate-y-0 rotate-0 scale-100' : 'opacity-0 translate-y-28 -rotate-6 scale-80'}`}>
             <div className="flex items-center mb-4">
               <div className="w-12 h-12 rounded-full bg-[#2E652A] flex items-center justify-center mr-4">
-                <Eye className="w-6 h-6 text-[#BEA336]" />
+                <BookOpen className="w-6 h-6 text-[#BEA336]" />
               </div>
-              <h3 className="text-[#2E652A] font-bold">Our Vision</h3>
+              <h3 className="text-[#2E652A] font-bold">Our Story</h3>
             </div>
-            <p className="text-gray-700">
-              To make leaders through Christian Discipleship
+            <p className="text-gray-700 mb-6 text-justify">
+              ACLM began in the parenting fellowship of Parklands Baptist Church in Nairobi, 
+              where a burden for raising godly children grew into a wider call to serve the African church.
             </p>
+            <button
+              onClick={() => navigate("/our-roots")}
+              className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-4 py-2 rounded-md transition-colors"
+            >
+              Get Our Full Story
+            </button>
           </div>
-        </div>
-
-        {/* Our Story */}
-        <div className={`bg-white p-8 rounded-lg shadow-sm text-center max-w-4xl mx-auto transition-all duration-2000 delay-3200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] transform ${isVisible ? 'opacity-100 translate-y-0 scale-100 rotate-0' : 'opacity-0 translate-y-32 scale-75 rotate-4'}`}>
-          <h3 className="text-[#2E652A] mb-6 font-bold text-xl">Our Story</h3>
-          <p className="text-gray-700 mb-6 text-justify">
-            ACLM began in the parenting fellowship of Parklands Baptist Church in Nairobi, 
-            where a burden for raising godly children grew into a wider call to serve the African church.
-          </p>
-          <button
-            onClick={() => navigate("/our-roots")}
-            className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-4 py-2 rounded-md transition-colors"
-          >
-            Get Our Full Story
-          </button>
         </div>
       </div>
     </section>
