@@ -11,7 +11,7 @@ export function Footer() {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:3000/api/newsletter-subscribe', {
+      const response = await fetch('https://aclm-website.onrender.com/api/newsletter-subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

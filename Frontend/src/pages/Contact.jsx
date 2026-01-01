@@ -24,7 +24,7 @@ export function Contact() {
     e.preventDefault();
     
     try {
-      const response = await fetch('/api/contact-us', {
+      const response = await fetch('https://aclm-website.onrender.com/api/contact-us', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url(https://images.unsplash.com/photo-1703669020883-66f3e77ae929?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwb2ZmaWNlJTIwcGhvbmV8ZW58MXx8fHwxNzYzNzIzMjU5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral)` 
+            backgroundImage: `url(https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250YWN0JTIwdXMlMjBvZmZpY2V8ZW58MXx8fHwxNzYzNzIzMjU5fDA&ixlib=rb-4.1.0&q=80&w=1080)` 
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#2E652A]/90 to-[#2E652A]/70" />
@@ -131,7 +131,7 @@ export function Contact() {
                     <div className="flex items-start gap-3">
                       <Phone className="w-5 h-5 text-[#BEA336] mt-1 flex-shrink-0" />
                       <div className="text-[#F6EFE2]">
-                        <p className="mb-1">+254 722 778 872</p>
+                        <p className="mb-1">+254 722 860 888</p>
                         <p className="mb-1">+254 727 355 791</p>
                         <p>+254 722 458 513</p>
                       </div>
@@ -139,15 +139,13 @@ export function Contact() {
                     <div className="flex items-start gap-3">
                       <Mail className="w-5 h-5 text-[#BEA336] mt-1 flex-shrink-0" />
                       <div className="text-[#F6EFE2]">
-                        <p className="mb-1">samuelmwiti@aclmkenya.org</p>
-                        <p>director@aclmkenya.org</p>
+                        <p className="mb-1">aclmregion@gmail.com</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <Clock className="w-5 h-5 text-[#BEA336] mt-1 flex-shrink-0" />
                       <div className="text-[#F6EFE2]">
                         <p className="mb-1">Monday - Friday: 9:00 AM - 5:00 PM</p>
-                        <p>Saturday: 10:00 AM - 2:00 PM</p>
                       </div>
                     </div>
                   </div>
