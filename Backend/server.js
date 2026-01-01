@@ -21,9 +21,8 @@ const PORT = process.env.PORT || 3000;
 // API: SEND NEWSLETTER SUBSCRIPTION
 app.post("/api/newsletter-subscribe", async (req, res) => {
   console.log('Newsletter subscription:', req.body);
-  console.log("Headers:", req.headers);
-  console.log("Body:", req.body);
-  res.json({ ok: true });
+  console.log("EMAIL_USER:", process.env.EMAIL_USER ? "OK" : "MISSING");
+  console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "OK" : "MISSING");
   
   const { email } = req.body;
 
