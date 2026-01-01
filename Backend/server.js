@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const { Resend } = require('resend');
 require("dotenv").config();
 const { initiateSTKPush } = require("./mpesa");
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'],
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'https://aclm-website.onrender.com'],
   credentials: true
 }));
 app.use(express.json());
@@ -31,23 +33,10 @@ app.post("/api/newsletter-subscribe", async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      family: 4,
-      connectionTimeout: 20000,
-      socketTimeout: 20000,
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "aclmregion@gmail.com",
-      subject: "New Newsletter and Mission reports Subscription - ACLM",
+    await resend.emails.send({
+      from: 'ACLM Website <onboarding@resend.dev>',
+      to: 'aclmregion@gmail.com',
+      subject: 'New Newsletter and Mission reports Subscription - ACLM',
       html: `
         <h2>New Newsletter Subscription</h2>
         <p><strong>Email:</strong> ${email}</p>
@@ -77,18 +66,10 @@ app.post("/api/send-volunteer-email", async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "aclmregion@gmail.com",
-      subject: "New ACLM Volunteer Application",
+    await resend.emails.send({
+      from: 'ACLM Website <onboarding@resend.dev>',
+      to: 'aclmregion@gmail.com',
+      subject: 'New ACLM Volunteer Application',
       html: `
         <h2>New Volunteer Application</h2>
         <p><strong>Name:</strong> ${name}</p>
@@ -118,17 +99,9 @@ app.post("/api/contact-us", async (req, res) => {
     });
   }
   try{
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "aclmregion@gmail.com",
+    await resend.emails.send({
+      from: 'ACLM Website <onboarding@resend.dev>',
+      to: 'aclmregion@gmail.com',
       subject: `Contact Message from ${name} on ACLM Website`,
       html: `
         <h2>${subject}</h2>
