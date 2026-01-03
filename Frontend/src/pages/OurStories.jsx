@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoadingPage } from "../components/ui/LoadingPage";
 import { ExternalLink, Play, Film } from "lucide-react";
 
@@ -50,6 +51,7 @@ const videos = [
 ];
 
 export function OurStories() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -136,7 +138,7 @@ export function OurStories() {
             Your partnership can help write the next chapter of transformation in Africa
           </p>
           <button 
-            onClick={() => window.location.href = '/support-us'}
+            onClick={() => navigate('/support-us')}
             className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-8 py-4 rounded-lg transition-colors shadow-lg hover:shadow-xl"
           >
             Partner With Us Today
