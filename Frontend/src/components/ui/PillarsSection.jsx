@@ -3,10 +3,10 @@ import { Card } from "./Card";
 import { CardContent } from "./CardContent";
 import { useEffect, useRef, useState } from "react";
 import { Users, BookOpen, Globe, Target, ArrowRight } from "lucide-react";
-import IssuingBalls from "../../images/Issuing-balls-thingira.jpeg"
-import Literature from "../../images/Discipleship-Literature-Mozambique.jpeg"
-import TrainingSeminar from "../../images/Training-seminar.jpeg"
-import LeoInMocuba from "../../images/Leonard-in-Mocuba.jpeg"
+import IssuingBalls from "../../images/Issuing-balls-thingira.webp"
+import Literature from "../../images/Discipleship-Literature-Mozambique.webp"
+import TrainingSeminar from "../../images/Training-seminar.webp"
+import LeoInMocuba from "../../images/Leonard-in-Mocuba.webp"
 
 const pillars = [
   {

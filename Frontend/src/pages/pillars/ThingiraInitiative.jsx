@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
 import { LoadingPage } from "../../components/ui/LoadingPage";
-import ThingiraMain from "../../images/Thingira_main.jpeg"
-import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.jpg"
-import GraciousFoundation from "../../images/grace_foundation_thingira.jpeg"
-import AllMen from "../../images/All men_Thingira.jpeg"
-import MenTraining from "../../images/Men-empowerment-Mozambique.jpeg"
+import ThingiraMain from "../../images/Thingira_main.webp"
+import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.webp"
+import GraciousFoundation from "../../images/grace_foundation_thingira.webp"
+import AllMen from "../../images/All men_Thingira.webp"
+import MenTraining from "../../images/Men-empowerment-Mozambique.webp"
 
 const slideshowImages = [
   ThingiraMain, AllMen, DistributingBalls

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../components/ui/Card";
 import { LoadingPage } from "../components/ui/LoadingPage";
 import { Mail, X, ChevronLeft, ChevronRight, Users } from "lucide-react";
-import Mwiti from "../images/Mwiti.png"
-import Waigwa from "../images/Waigwa_treasurer.png"
-import Chris from "../images/Chris_vicetreasurer.png"
-import Suji from "../images/Suji_Chair.png"
+import Mwiti from "../images/Mwiti.webp"
+import Waigwa from "../images/Waigwa_treasurer.webp"
+import Chris from "../images/Chris_vicetreasurer.webp"
+import Suji from "../images/Suji_Chair.webp"
 
 const teamMembers = [
   {

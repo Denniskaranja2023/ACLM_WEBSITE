@@ -3,13 +3,13 @@ import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
-import ChurchPlant from "../../images/Church-plant-interior-Mozambique.jpeg"
-import Mobilization1 from "../../images/Mission-mobilization-mozambique-1.jpeg"
-import Mobilization2 from "../../images/Mission-Mobilization.jpeg"
-import Mobilization3 from "../../images/Leadership-training-mozambique-1.jpeg"
-import Mobilization4 from "../../images/Mobilizing-church-seminar.jpeg"
-import Mobilization5 from "../../images/Mobilizing-through-evangelism-training.jpeg"
-import LeoInMocuba from "../../images/Leonard-in-Mocuba.jpeg"
+import ChurchPlant from "../../images/Church-plant-interior-Mozambique.webp"
+import Mobilization1 from "../../images/Mission-mobilization-mozambique-1.webp"
+import Mobilization2 from "../../images/Mission-Mobilization.webp"
+import Mobilization3 from "../../images/Leadership-training-mozambique-1.webp"
+import Mobilization4 from "../../images/Mobilizing-church-seminar.webp"
+import Mobilization5 from "../../images/Mobilizing-through-evangelism-training.webp"
+import LeoInMocuba from "../../images/Leonard-in-Mocuba.webp"
 
 const slideshowImages = [
   Mobilization5,

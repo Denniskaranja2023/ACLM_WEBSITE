@@ -3,10 +3,10 @@ import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
-import Cube from "../../images/Evangelism cube.jpeg"
-import AudioBibles from "../../images/Audio-Bible-cropped.png"
-import Literature from "../../images/Discipleship-Literature-Mozambique.jpeg"
-import MenTraining from "../../images/Every-man-a-warrior-mozambique.jpeg"
+import Cube from "../../images/Evangelism cube.webp"
+import AudioBibles from "../../images/Audio-Bible-cropped.webp"
+import Literature from "../../images/Discipleship-Literature-Mozambique.webp"
+import MenTraining from "../../images/Every-man-a-warrior-mozambique.webp"
 
 const slideshowImages = [
   Literature,

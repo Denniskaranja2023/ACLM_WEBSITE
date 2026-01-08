@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, ChevronDown } from "lucide-react";
-import aclmLogo from "../../images/ACLM_LOGO.png";
+import aclmLogo from "../../images/ACLM_LOGO.webp";
 import { useState } from "react";
 
 export function Footer() {

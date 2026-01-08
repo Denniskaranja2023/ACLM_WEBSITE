@@ -4,12 +4,12 @@ import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play, ArrowRight } from "lucide-react";
-import ACLM1 from "../../images/ACLM 1.jpg";
-import EvangelismCube from "../../images/Evangelism cube.jpeg";
-import BaptismSession from "../../images/Baptism-in-session-mozambique.jpeg";
-import BaptismPrep from "../../images/Baptism-preparation-Mozambique.jpeg";
-import MercyMinistry from "../../images/Mercy ministry.jpeg";
-import Training from "../../images/ACLM 4.jpg"
+import ACLM1 from "../../images/ACLM 1.webp";
+import EvangelismCube from "../../images/Evangelism cube.webp";
+import BaptismSession from "../../images/Baptism-in-session-mozambique.webp";
+import BaptismPrep from "../../images/Baptism-preparation-Mozambique.webp";
+import MercyMinistry from "../../images/Mercy ministry.webp";
+import Training from "../../images/ACLM 4.webp"
 
 const slideshowImages = [
   ACLM1,

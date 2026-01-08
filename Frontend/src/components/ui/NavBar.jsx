@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useRef } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
-import aclmLogo from "../../images/ACLM_LOGO.png";
+import aclmLogo from "../../images/ACLM_LOGO.webp";
 
 export function Navbar() {
   const location = useLocation();

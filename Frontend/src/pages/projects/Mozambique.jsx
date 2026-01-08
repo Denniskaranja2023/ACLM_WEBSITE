@@ -4,21 +4,21 @@ import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play } from "lucide-react";
-import TrainingImage from "../../images/Evangelism training-mozambique.jpeg"
-import ChurchPlant from "../../images/Church-plant-interior-Mozambique.jpeg"
-import SmallGroups from "../../images/small-groups-after-training-mozambique.jpeg"
-import AudioBibles from "../../images/Audio-Bible-cropped.png"
-import EveryMan from "../../images/every-man-a-warrior-mozambique-2.jpeg"
-import DiscipleshipLiterature from "../../images/Discipleship-Literature-Mozambique.jpeg"
-import EvangelismTraining2 from "../../images/Evangelism-Training-2.jpeg"
-import TrainingSeminar from "../../images/Training-seminar.jpeg"
-import MinisteringChurch from "../../images/Training-church-1.jpeg"
-import MensSeminar from "../../images/Men-seminar-Mozambique-1.jpeg"
-import WomensConference from "../../images/Women-conference-Mozambique.jpeg"
-import SundaySchool from "../../images/Sunday-school-teachers-mozambique.jpeg"
-import TeachingChildren from "../../images/Teaching-English-as -ministry-Mozambique-2.jpeg"
-import ChildrenMinistry from "../../images/Children-Ministry-Mozambique.jpeg"
-import MensTraining from "../../images/Men-seminar-Mozambique-2.jpeg"
+import TrainingImage from "../../images/Evangelism training-mozambique.webp"
+import ChurchPlant from "../../images/Church-plant-interior-Mozambique.webp"
+import SmallGroups from "../../images/small-groups-after-training-mozambique.webp"
+import AudioBibles from "../../images/Audio-Bible-cropped.webp"
+import EveryMan from "../../images/every-man-a-warrior-mozambique-2.webp"
+import DiscipleshipLiterature from "../../images/Discipleship-Literature-Mozambique.webp"
+import EvangelismTraining2 from "../../images/Evangelism-Training-2.webp"
+import TrainingSeminar from "../../images/Training-seminar.webp"
+import MinisteringChurch from "../../images/Training-church-1.webp"
+import MensSeminar from "../../images/Men-seminar-Mozambique-1.webp"
+import WomensConference from "../../images/Women-conference-Mozambique.webp"
+import SundaySchool from "../../images/Sunday-school-teachers-mozambique.webp"
+import TeachingChildren from "../../images/Teaching-English-as -ministry-Mozambique-2.webp"
+import ChildrenMinistry from "../../images/Children-Ministry-Mozambique.webp"
+import MensTraining from "../../images/Men-seminar-Mozambique-2.webp"
 
 
 

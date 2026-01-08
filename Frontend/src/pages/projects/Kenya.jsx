@@ -4,12 +4,12 @@ import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play, ArrowRight } from "lucide-react";
-import ThingiraMain from "../../images/Thingira_main.jpeg";
-import AllMen from "../../images/All men_Thingira.jpeg";
-import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.jpg";
-import Mobilization1 from "../../images/Mission-mobilization-mozambique-1.jpeg";
-import Mobilization2 from "../../images/Mission-Mobilization.jpeg";
-import Mobilization3 from "../../images/Mobilizing-through-evangelism-training.jpeg";
+import ThingiraMain from "../../images/Thingira_main.webp";
+import AllMen from "../../images/All men_Thingira.webp";
+import DistributingBalls from "../../images/ISSUING-BALLS-EDITED.webp";
+import Mobilization1 from "../../images/Mission-mobilization-mozambique-1.webp";
+import Mobilization2 from "../../images/Mission-Mobilization.webp";
+import Mobilization3 from "../../images/Mobilizing-through-evangelism-training.webp";
 
 const slideshowImages = [
   ThingiraMain,

@@ -4,11 +4,11 @@ import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { ExternalLink, Play } from "lucide-react";
-import Training1 from "../../images/2014-congo-evangelism-training.jpg"
-import Training2 from "../../images/Pst-Mwiti-Evangelism-cube.jpg"
-import EvangelismCubeTraining1 from "../../images/congo-evangelism-cube-training-2.jpg"
-import EvangelismCubeTraining2 from "../../images/training-many-people-evangelism-cube.jpg"
-import EvangelismCubeUse from "../../images/evangelism-cube-in-use.jpg"
+import Training1 from "../../images/2014-congo-evangelism-training.webp"
+import Training2 from "../../images/Pst-Mwiti-Evangelism-cube.webp"
+import EvangelismCubeTraining1 from "../../images/congo-evangelism-cube-training-2.webp"
+import EvangelismCubeTraining2 from "../../images/training-many-people-evangelism-cube.webp"
+import EvangelismCubeUse from "../../images/evangelism-cube-in-use.webp"
 
 
 const slideshowImages = [

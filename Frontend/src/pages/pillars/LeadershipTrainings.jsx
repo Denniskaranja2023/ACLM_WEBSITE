@@ -3,13 +3,13 @@ import { PillarSlideShow } from "../../components/ui/PillarSlideShow";
 import { LoadingPage } from "../../components/ui/LoadingPage";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
-import Training_1 from "../../images/ACLM 4.jpg"
-import Training_2 from "../../images/aclm 5.jpg"
-import Training_3 from "../../images/ACLM 2.jpg"
-import TrainingImage from "../../images/Evangelism training-mozambique.jpeg"
-import SmallGroups from "../../images/small-groups-after-training-mozambique.jpeg"
-import MenTraining from "../../images/Every-man-a-warrior-mozambique.jpeg"
-import PastorConference from "../../images/Mobilizing-church-seminar.jpeg"
+import Training_1 from "../../images/ACLM 4.webp"
+import Training_2 from "../../images/aclm 5.webp"
+import Training_3 from "../../images/ACLM 2.webp"
+import TrainingImage from "../../images/Evangelism training-mozambique.webp"
+import SmallGroups from "../../images/small-groups-after-training-mozambique.webp"
+import MenTraining from "../../images/Every-man-a-warrior-mozambique.webp"
+import PastorConference from "../../images/Mobilizing-church-seminar.webp"
 
 const slideshowImages = [
   Training_1,

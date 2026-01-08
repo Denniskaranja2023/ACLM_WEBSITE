@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Import local hero images so Vite can bundle and optimize them correctly
-import heroImage1 from "../../images/ACLM 4.jpg";
-import TrainingImage from "../../images/Evangelism training-mozambique.jpeg"
-import SmallGroups from "../../images/small-groups-after-training-mozambique.jpeg"
-import heroImage2 from "../../images/aclm 5.jpg";
-import heroImage3 from "../../images/ACLM 1.png";
-import ThingiraMain from "../../images/Thingira_main.jpeg"
+import heroImage1 from "../../images/ACLM 4.webp";
+import TrainingImage from "../../images/Evangelism training-mozambique.webp"
+import SmallGroups from "../../images/small-groups-after-training-mozambique.webp"
+import heroImage2 from "../../images/aclm 5.webp";
+import heroImage3 from "../../images/ACLM 1.webp";
+import ThingiraMain from "../../images/Thingira_main.webp"
 
 const slides = [
   {

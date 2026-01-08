@@ -3,7 +3,7 @@ import { Card } from "../components/ui/Card";
 import { CardContent } from "../components/ui/CardContent";
 import { LoadingPage } from "../components/ui/LoadingPage";
 import Donate from "../images/Donate.webp"
-import Volunteer from "../images/Volunteer.jpg"
+import Volunteer from "../images/Volunteer.webp"
 import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Lightbulb, Send, CheckCircle } from "lucide-react";
 
 export function SupportUs() {
