@@ -54,8 +54,8 @@ export function Contact() {
   };
 
   const openGoogleMaps = () => {
-    // Trinity Fellowship Center, Garden Estate coordinates
-    const address = "Trinity Fellowship Center, Garden Estate, Nairobi, Kenya";
+    // Lukenya Hills Estate Mutungoni Rd,coordinates
+    const address = "Lukenya Hills Estate Mutungoni Rd, AthiRiver ward, KE";
     const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
     window.open(mapsUrl, '_blank');
   };
@@ -110,9 +110,7 @@ export function Contact() {
                     </div>
                     <div>
                       <h3 className="text-xl mb-2">Physical Address</h3>
-                      <p className="text-[#F6EFE2] text-sm mb-1">Trinity Fellowship Center</p>
-                      <p className="text-[#F6EFE2] text-sm mb-1">Next to Faith Ventures School</p>
-                      <p className="text-[#F6EFE2] text-sm">Garden Estate, Nairobi</p>
+                      <p className="text-[#F6EFE2] text-sm mb-1">Lukenya Hills Estate Mutungoni Rd, AthiRiver ward, KE</p>
                     </div>
                   </div>
 
