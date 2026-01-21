@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { LoadingPage } from "../components/ui/LoadingPage";
+import { useSessionStorage } from "../hooks/useStorage";
 import { Download, FileText, Calendar } from "lucide-react";
 
 // Import PDF files
@@ -45,7 +46,7 @@ const missionReports = [
 
 export function MissionReports() {
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedReport, setSelectedReport] = useState(null);
+  const [selectedReport, setSelectedReport] = useSessionStorage('missionReports-selectedReport', null);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, ChevronDown } from "lucide-react";
 import aclmLogo from "../../images/ACLM_LOGO.webp";
 import { useState } from "react";
+import { useLocalStorage } from "../../hooks/useStorage";
 
 export function Footer() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useLocalStorage('footer-newsletterEmail', "");
   const [showProjectsDropdown, setShowProjectsDropdown] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useLocalStorage('footer-newsletterSubscribed', false);
   
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ export function Footer() {
       
       if (result.success) {
         alert("Thank you for subscribing to our newsletter!");
+        setIsSubscribed(true);
         setEmail("");
       } else {
         alert(`Error: ${result.message}`);
@@ -147,20 +150,28 @@ export function Footer() {
             <h4 className="text-[#BEA336] mb-4">Newsletter</h4>
             <p className="text-sm mb-4">Stay updated with our latest news and stories.</p>
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col space-y-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-white text-gray-900 px-4 py-2 rounded-md"
-              />
-              <button 
-                type="submit" 
-                className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-4 py-2 rounded-md transition-colors"
-              >
-                Subscribe
-              </button>
+              {!isSubscribed ? (
+                <>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="bg-white text-gray-900 px-4 py-2 rounded-md"
+                  />
+                  <button 
+                    type="submit" 
+                    className="bg-[#BEA336] hover:bg-[#a08d2d] text-white px-4 py-2 rounded-md transition-colors"
+                  >
+                    Subscribe
+                  </button>
+                </>
+              ) : (
+                <div className="text-[#BEA336] text-sm py-2">
+                  ✓ You're subscribed to our newsletter!
+                </div>
+              )}
             </form>
           </div>
         </div>

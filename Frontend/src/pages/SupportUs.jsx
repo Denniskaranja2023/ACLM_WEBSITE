@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card";
 import { CardContent } from "../components/ui/CardContent";
 import { LoadingPage } from "../components/ui/LoadingPage";
+import { useLocalStorage } from "../hooks/useStorage";
 import Donate from "../images/Donate.webp"
 import Volunteer from "../images/Volunteer.webp"
 import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Lightbulb, Send, CheckCircle } from "lucide-react";
@@ -9,17 +10,17 @@ import { Heart, HandHeart, DollarSign, CreditCard, Smartphone, Users, Target, Li
 export function SupportUs() {
   const [isLoading, setIsLoading] = useState(true);
   const [counters, setCounters] = useState({ leaders: 0, countries: 0, pillars: 0 });
-  const [volunteerForm, setVolunteerForm] = useState({
+  const [volunteerForm, setVolunteerForm] = useLocalStorage('supportUs-volunteerForm', {
     name: "",
     email: "",
     contact: "",
     howToVolunteer: ""
   });
 
-  const [donationAmount, setDonationAmount] = useState("");
-  const [customAmount, setCustomAmount] = useState("");
-  const [mpesaNumber, setMpesaNumber] = useState("");
-  const [selectedMethod, setSelectedMethod] = useState("paypal");
+  const [donationAmount, setDonationAmount] = useLocalStorage('supportUs-donationAmount', "");
+  const [customAmount, setCustomAmount] = useLocalStorage('supportUs-customAmount', "");
+  const [mpesaNumber, setMpesaNumber] = useLocalStorage('supportUs-mpesaNumber', "");
+  const [selectedMethod, setSelectedMethod] = useLocalStorage('supportUs-selectedMethod', "paypal");
 
   useEffect(() => {
     const timer = setTimeout(() => {

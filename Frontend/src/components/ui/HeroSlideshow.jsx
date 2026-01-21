@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSessionStorage } from "../../hooks/useStorage";
 
 // Import local hero images so Vite can bundle and optimize them correctly
 import heroImage1 from "../../images/ACLM 4.webp";
@@ -37,7 +38,7 @@ const slides = [
 ];
 
 export function HeroSlideshow() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useSessionStorage('heroSlideshow-currentSlide', 0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export function HeroSlideshow() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [setCurrentSlide]);
 
   return (
     <div className="relative h-[75vh] overflow-hidden">

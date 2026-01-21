@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/ui/Card";
 import { CardContent } from "../../components/ui/CardContent";
 import { LoadingPage } from "../../components/ui/LoadingPage";
+import { useSessionStorage } from "../../hooks/useStorage";
 import { ExternalLink, Play } from "lucide-react";
 import Training1 from "../../images/2014-congo-evangelism-training.webp"
 import Training2 from "../../images/Pst-Mwiti-Evangelism-cube.webp"
@@ -65,8 +66,8 @@ const videos = [
 
 export function Congo() {
   const [isLoading, setIsLoading] = useState(true);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [projectSlides, setProjectSlides] = useState({});
+  const [currentSlide, setCurrentSlide] = useSessionStorage('congo-currentSlide', 0);
+  const [projectSlides, setProjectSlides] = useSessionStorage('congo-projectSlides', {});
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Card } from "../components/ui/Card";
 import { CardContent } from "../components/ui/CardContent";
 import { LoadingPage } from "../components/ui/LoadingPage";
+import { useLocalStorage } from "../hooks/useStorage";
 import { MapPin, Phone, Mail, Clock, Send, Building2, Navigation, Mailbox } from "lucide-react";
 
 export function Contact() {
   const [isLoading, setIsLoading] = useState(true);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useLocalStorage('contact-formData', {
     name: "",
     email: "",
     subject: "",
